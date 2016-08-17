@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>前端代码规范相关整理 | ILENE&#39;S BLOG</title>
+  <meta name="author" content="Ilene Yang">
+  
+  <meta name="description" content="ilene&#39;s blog | fe developer">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="前端代码规范相关整理"/>
+  <meta property="og:site_name" content="ILENE&#39;S BLOG"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ILENE&#39;S BLOG" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-74494633-1', 'auto');
+	ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+<body>
+  <div class="container clearfix">
+    <header id="header"><!--<a class="left-btn">-->
+  <!--<span class="icon-arrow-left"></span>-->
+<!--</a>-->
+<div id="hideLeft" class="align-left">
+  <div class="user-info clearfix">
+    <a id="menuToggle" class="menu-toggle">Menu</a>
+    <a class="user-img" href="/">
+      <img src="/images/ilene-avatar@2x.png" alt="ILENE'S BLOG">
+    </a>
+    <a class="user-img" href="/">
+      <h1>ILENE'S BLOG</h1>
+    </a>
+    <p>FE developer</p>
+  </div>
+  <div id="menu" class="menu toggle">
+    <ul class="menu-nav clearfix">
+      
+      <li class="nav"><a href="/">home</a></li>
+      
+      <li class="nav"><a href="/archives">archives</a></li>
+      
+      <li class="nav"><a id="about">about</a></li>
+    </ul>
+  </div>
+</div>
+</header>
+    <div id="content">
+      <div id="main-col"><div id="wrapper"><article class="post">
+  
+  <div class="post-content page-article clearfix">
+    <header id="scrollHeader" class="article-header">
+      
+        <time datetime="2016-01-11T07:44:00.000Z"><a href="/2016/01/11/front-end-specification/">Jan 11th</a></time>
+        
+  
+  <div class="tags">
+    <a href="/tags/前端/">前端</a>, <a href="/tags/规范/">规范</a>
+  </div>
+
+      <div class="clearfix"></div>
+      
+      
+    
+        <h1 class="title">前端代码规范相关整理</h1>
+    
+
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">文章目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML规范－整体结构"><span class="toc-text">HTML规范－整体结构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTML基础设施"><span class="toc-text">HTML基础设施</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构顺序和视觉顺序基本保持一致"><span class="toc-text">结构顺序和视觉顺序基本保持一致</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#结构、表现、行为三者分离，避免内联"><span class="toc-text">结构、表现、行为三者分离，避免内联</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#保持良好的简洁的树形结构"><span class="toc-text">保持良好的简洁的树形结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#另外，请做到以下几点"><span class="toc-text">另外，请做到以下几点</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML规范－代码格式"><span class="toc-text">HTML规范－代码格式</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#代码注释方法"><span class="toc-text">代码注释方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#严格的嵌套"><span class="toc-text">严格的嵌套</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#严格的属性"><span class="toc-text">严格的属性</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML规范－内容语义"><span class="toc-text">HTML规范－内容语义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS规范-分类方法"><span class="toc-text">CSS规范 - 分类方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS文件的分类和引用顺序"><span class="toc-text">CSS文件的分类和引用顺序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#CSS内部的分类及其顺序"><span class="toc-text">CSS内部的分类及其顺序</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS规范-命名规则"><span class="toc-text">CSS规范 - 命名规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CSS规范-书写顺序"><span class="toc-text">CSS规范 - 书写顺序</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#基本排版规范"><span class="toc-text">基本排版规范</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#选择器内属性的顺序和组织"><span class="toc-text">选择器内属性的顺序和组织</span></a></li></ol></li></ol>
+  </div>
+
+
+    </header>
+    <div class="post-main">
+      <p>主要是html、css规范，整理的目的主要是规范自己的代码，养成好的代码书写习惯。</p>
+<h2 id="HTML规范－整体结构"><a href="#HTML规范－整体结构" class="headerlink" title="HTML规范－整体结构"></a>HTML规范－整体结构</h2><h3 id="HTML基础设施"><a href="#HTML基础设施" class="headerlink" title="HTML基础设施"></a>HTML基础设施</h3><ul>
+<li>文件应以“&lt;!DOCTYPE ……&gt;”首行顶格开始，推荐使用“&lt;!DOCTYPE html&gt;”。</li>
+<li>必须申明文档的编码charset，且与文件本身编码保持一致，推荐使用UTF-8编码<meta charset="utf-8">。</li>
+<li>根据页面内容和需求填写适当的keywords和description。</li>
+<li>页面title是极为重要的不可缺少的一项。</li>
+</ul>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>前端代码规范整理<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"keywords"</span> <span class="attr">content</span>=<span class="string">"前端"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"description"</span> <span class="attr">content</span>=<span class="string">"前端代码"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"stylesheet"</span> <span class="attr">href</span>=<span class="string">"css/style.css"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"shortcut icon"</span> <span class="attr">href</span>=<span class="string">"img/favicon.ico"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">"apple-touch-icon"</span> <span class="attr">href</span>=<span class="string">"img/touchicon.png"</span>/&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h3 id="结构顺序和视觉顺序基本保持一致"><a href="#结构顺序和视觉顺序基本保持一致" class="headerlink" title="结构顺序和视觉顺序基本保持一致"></a>结构顺序和视觉顺序基本保持一致</h3><ul>
+<li>按照从上至下、从左到右的视觉顺序书写HTML结构</li>
+<li>有时候为了便于搜索引擎抓取，我们也会将重要内容在HTML结构顺序上提前。</li>
+<li>用div代替table布局，可以使HTML更具灵活性，也方便利用CSS控制。</li>
+<li>table不建议用于布局，但表现具有明显表格形式的数据，table还是首选。</li>
+</ul>
+<h3 id="结构、表现、行为三者分离，避免内联"><a href="#结构、表现、行为三者分离，避免内联" class="headerlink" title="结构、表现、行为三者分离，避免内联"></a>结构、表现、行为三者分离，避免内联</h3><ul>
+<li>使用link将css文件引入，并置于head中。</li>
+<li>使用script将js文件引入，并置于body底部。</li>
+</ul>
+<h3 id="保持良好的简洁的树形结构"><a href="#保持良好的简洁的树形结构" class="headerlink" title="保持良好的简洁的树形结构"></a>保持良好的简洁的树形结构</h3><ul>
+<li>每一个块级元素都另起一行，每一行都使用Tab缩进对齐（head和body的子元素不需要缩进）。删除冗余的行尾的空格。</li>
+<li>使用4个空格代替1个Tab（大多数编辑器中可设置）。</li>
+<li>对于内容较为简单的表格，建议将tr写成单行。</li>
+<li>你也可以在大的模块之间用空行隔开，使模块更清晰。</li>
+</ul>
+<h3 id="另外，请做到以下几点"><a href="#另外，请做到以下几点" class="headerlink" title="另外，请做到以下几点"></a>另外，请做到以下几点</h3><ul>
+<li>结构上如果可以并列书写，就不要嵌套。<br>如果可以写成<code>&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;</code>那么就不要写成<code>&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;</code></li>
+<li>如果结构已经可以满足视觉和语义的要求，那么就不要有额外的冗余的结构。<br>比如<code>&lt;div&gt;&lt;h2&gt;&lt;/h2&gt;&lt;/div&gt;</code>已经能满足要求，那么就不要再写成<code>&lt;div&gt;&lt;div&gt;&lt;h2&gt;&lt;/h2&gt;&lt;/div&gt;&lt;/div&gt;</code></li>
+<li>一个标签上引用的className不要过多，越少越好。<br>比如不要出现这种情况：<code>&lt;div class=&quot;class1 class2 class3 class4&quot;&gt;&lt;/div&gt;</code></li>
+<li>对于一个语义化的内部标签，应尽量避免使用className。<br>比如在这样一个列表中，li标签中的itm应去除：<code>&lt;ul class=&quot;m-help&quot;&gt;&lt;li class=&quot;itm&quot;&gt;&lt;/li&gt;&lt;li class=&quot;itm&quot;&gt;&lt;/li&gt;&lt;/ul&gt;</code></li>
+</ul>
+<h2 id="HTML规范－代码格式"><a href="#HTML规范－代码格式" class="headerlink" title="HTML规范－代码格式"></a>HTML规范－代码格式</h2><h3 id="代码注释方法"><a href="#代码注释方法" class="headerlink" title="代码注释方法"></a>代码注释方法</h3><p>采用类似标签闭合的写法，与HTML统一格式；</p>
+<ul>
+<li>开始注释：<code>&lt;!-- 注释文案 --&gt;</code>（文案两头空格）</li>
+<li>结束注释：<code>&lt;!-- /注释文案 --&gt;</code>（文案前加“/”符号，类似标签的闭合）。。</li>
+<li>允许只有开始注释！</li>
+<li>单行代码的注释也保持<code>同行</code>，两端空格；多行代码的注释起始和结尾都<code>另起一行并左缩进对齐</code>。</li>
+</ul>
+<h3 id="严格的嵌套"><a href="#严格的嵌套" class="headerlink" title="严格的嵌套"></a>严格的嵌套</h3><ul>
+<li>尽可能以最严格的xhtml strict标准来嵌套，比如内联元素不能包含块级元素等等。</li>
+<li>正确闭合标签且必须闭合。</li>
+</ul>
+<h3 id="严格的属性"><a href="#严格的属性" class="headerlink" title="严格的属性"></a>严格的属性</h3><ul>
+<li>属性和值全部小写，每个属性都必须有一个值，每个值必须加双引号。</li>
+<li>没有值的属性必须使用自己的名称做为值（<code>checked、disabled、readonly、selected</code>等等）。</li>
+<li>可以省略style标签和script标签的type属性。</li>
+</ul>
+<h2 id="HTML规范－内容语义"><a href="#HTML规范－内容语义" class="headerlink" title="HTML规范－内容语义"></a>HTML规范－内容语义</h2><ul>
+<li><strong>内容类型决定使用的语义标签</strong>：根据你的内容语义化HTML结构</li>
+<li><strong>加强“资源型”内容的可访问性和可用性</strong>：在资源型的内容上加入描述文案，比如给<code>img</code>添加<code>alt</code>属性，在<code>audio</code>内加入文案和链接等等。</li>
+<li><strong>加强“不可见”内容的可访问性</strong>：背景图上的文字应该同时写在html中，并使用css使其不可见，有利于搜索引擎抓取你的内容，也可以在css失效的情况下看到内容。</li>
+<li><strong>适当使用实体</strong>：以实体代替与HTML语法相同的字符，避免浏览解析错误。</li>
+</ul>
+<h2 id="CSS规范-分类方法"><a href="#CSS规范-分类方法" class="headerlink" title="CSS规范 - 分类方法"></a>CSS规范 - 分类方法</h2><h3 id="CSS文件的分类和引用顺序"><a href="#CSS文件的分类和引用顺序" class="headerlink" title="CSS文件的分类和引用顺序"></a>CSS文件的分类和引用顺序</h3><p>通常，一个项目我们只引用一个CSS，但是对于较大的项目，我们需要把CSS文件进行分类。<br>我们按照CSS的性质和用途，将CSS文件分成“公共型样式”、“特殊型样式”、“皮肤型样式”，并以此顺序引用（按需求决定是否添加版本号）。</p>
+<h3 id="CSS内部的分类及其顺序"><a href="#CSS内部的分类及其顺序" class="headerlink" title="CSS内部的分类及其顺序"></a>CSS内部的分类及其顺序</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/* 重置 */</span></div><div class="line"><span class="selector-tag">div</span>,<span class="selector-tag">p</span>,<span class="selector-tag">ul</span>,<span class="selector-tag">ol</span>,<span class="selector-tag">li</span>&#123;<span class="attribute">margin</span>:<span class="number">0</span>;<span class="attribute">padding</span>:<span class="number">0</span>;&#125;</div><div class="line"><span class="comment">/* 默认 */</span></div><div class="line"><span class="selector-tag">strong</span>,<span class="selector-tag">em</span>&#123;<span class="attribute">font-style</span>:normal;<span class="attribute">font-weight</span>:bold;&#125;</div><div class="line"><span class="comment">/* 统一调用背景图 */</span></div><div class="line"><span class="selector-class">.m-logo</span> <span class="selector-tag">a</span>,<span class="selector-class">.m-nav</span> <span class="selector-tag">a</span>,<span class="selector-class">.m-nav</span> <span class="selector-tag">em</span>&#123;<span class="attribute">background</span>:<span class="built_in">url</span>(images/sprite.png) no-repeat <span class="number">9999px</span> <span class="number">9999px</span>;&#125;</div><div class="line"><span class="comment">/* 统一清除浮动 */</span></div><div class="line"><span class="selector-class">.g-bdc</span><span class="selector-pseudo">:after</span>,<span class="selector-class">.m-dimg</span> <span class="selector-tag">ul</span><span class="selector-pseudo">:after</span>,<span class="selector-class">.u-tab</span><span class="selector-pseudo">:after</span>&#123;<span class="attribute">display</span>:block;<span class="attribute">visibility</span>:hidden;<span class="attribute">clear</span>:both;<span class="attribute">height</span>:<span class="number">0</span>;<span class="attribute">overflow</span>:hidden;<span class="attribute">content</span>:<span class="string">'.'</span>;&#125;</div><div class="line"><span class="selector-class">.g-bdc</span>,<span class="selector-class">.m-dimg</span> <span class="selector-tag">ul</span>,<span class="selector-class">.u-tab</span>&#123;<span class="attribute">zoom</span>:<span class="number">1</span>;&#125;</div><div class="line"><span class="comment">/* 布局 */</span></div><div class="line"><span class="selector-class">.g-sd</span>&#123;<span class="attribute">float</span>:left;<span class="attribute">width</span>:<span class="number">300px</span>;&#125;</div><div class="line"><span class="comment">/* 模块 */</span></div><div class="line"><span class="selector-class">.m-logo</span>&#123;<span class="attribute">width</span>:<span class="number">200px</span>;<span class="attribute">height</span>:<span class="number">50px</span>;&#125;</div><div class="line"><span class="comment">/* 元件 */</span></div><div class="line"><span class="selector-class">.u-btn</span>&#123;<span class="attribute">height</span>:<span class="number">20px</span>;<span class="attribute">border</span>:<span class="number">1px</span> solid <span class="number">#333</span>;&#125;</div><div class="line"><span class="comment">/* 功能 */</span></div><div class="line"><span class="selector-class">.f-tac</span>&#123;<span class="attribute">text-align</span>:center;&#125;</div><div class="line"><span class="comment">/* 皮肤 */</span></div><div class="line"><span class="selector-class">.s-fc</span>,<span class="selector-tag">a</span><span class="selector-class">.s-fc</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">color</span>:<span class="number">#fff</span>;&#125;</div></pre></td></tr></table></figure>
+<h2 id="CSS规范-命名规则"><a href="#CSS规范-命名规则" class="headerlink" title="CSS规范 - 命名规则"></a>CSS规范 - 命名规则</h2><ul>
+<li>提高重用性少用id；</li>
+<li>一组命名要做到能顾名思义！或者能“望文生义”；</li>
+<li>语义贴切、冲突几率、渲染性能、协作通畅；</li>
+<li>只能是 <code>[a-z\d\-]</code>英文字母+数字+字符“-”，用作脚本钩子的采用“J_”前缀；</li>
+<li>“-“；作长命名时的“分类分隔符（如：<code>tab-nav</code>）”；功能上的“扩展分隔符（如：<code>tab-trigger-active</code>）”，</li>
+<li><p>class命名:</p>
+<blockquote>
+<p>1.模块名 ；<br>2.模块名-模块状态 ；<br>3.模块名-子模块名 ；<br>4.模块名-子模块名-模块状态 ；</p>
+</blockquote>
+</li>
+<li><p>不能用“表象”的词命名，如：大小、颜色、方位…</p>
+</li>
+<li>id命名：帕斯卡命名法，<code>CamelName</code></li>
+</ul>
+<h2 id="CSS规范-书写顺序"><a href="#CSS规范-书写顺序" class="headerlink" title="CSS规范 - 书写顺序"></a>CSS规范 - 书写顺序</h2><h3 id="基本排版规范"><a href="#基本排版规范" class="headerlink" title="基本排版规范"></a>基本排版规范</h3><p>小写、单行、多行选择器用逗号分行、每属性分号分割、单引号、缩进；</p>
+<h3 id="选择器内属性的顺序和组织"><a href="#选择器内属性的顺序和组织" class="headerlink" title="选择器内属性的顺序和组织"></a>选择器内属性的顺序和组织</h3><ul>
+<li>影响文档流的属性（<code>display, position, float, clear, visibility, table-layout</code>）</li>
+<li>自身盒模型的属性（<code>width, height, margin, padding, border</code>）</li>
+<li>排版相关属性（<code>font, line-height, text-align, text-indent, vertical-align</code>）</li>
+<li>装饰性属性（<code>color, background, opacity, cursor</code>）</li>
+<li>生成内容的属性（<code>content, list-style, quotes</code>）</li>
+<li>CSS3属性：<code>transform/transition/animation/box-shadow/border-radius</code></li>
+<li>加浏览器前缀，按照 <code>-webkit- / -moz- / -ms- / -o- / std</code>的顺序，标准属性写在最后。</li>
+</ul>
+<p> 参阅：<br><a href="http://www.cnblogs.com/daxiang/p/4662034.html%20%E2%80%9C%E6%97%A0%E5%BA%9F%E8%AF%9D%E7%BD%91%E9%A1%B5%E9%87%8D%E6%9E%84%E2%80%9D" target="_blank" rel="external">无废话网页重构</a><br><a href="http://nec.netease.com/" target="_blank" rel="external">NEC：更好的CSS样式解决方案</a></p>
+
+    </div>
+    <footer>
+      
+      
+  <!--<div class="addthis addthis_toolbox addthis_default_style">-->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!--<a class="addthis_counter addthis_pill_style"></a>-->
+  <!--</div>-->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["qzone","tsina","bdysc","weixin","tqq","tieba","douban","sqq","huaban","youdao","fbook","twi","linkedin","evernotecn","copy"],"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>-->
+
+    </footer>
+  </div>
+</article>
+
+<section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-front-end-specification" data-title="前端代码规范相关整理" data-url="http://yilene.github.io/2016/01/11/front-end-specification/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:'undefined'};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div id="aboutDrop" class="backdrop hide">
+  <div id="aboutInfo" class="about-wrap animated bounceInDown">
+    <div class="author-img">
+      <img src="/images/avatar-author.jpg" alt="Ilene">
+    </div>
+    <div class="author-info">
+      <p>Hi I’m Ilene, a front-end developer</p>
+      <ul class="contact clearfix">
+        <li><a href="https://github.com/Yilene" target="_blank" class="link-github">github</a></li>
+        <li><a href="http://weibo.com/yilene" target="_blank" class="link-weibo">weibo</a></li>
+        <li><a href="mailto:ilene.yali@gmail.com" target="_blank" class="link-email">email</a></li>
+      </ul>
+    </div>
+    <a id="closeBtn" class="close-about">
+      <span class="close"></span>
+    </a>
+  </div>
+</div>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="/js/jquery-3.1.0.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/fastclick.js"></script>
+<script src="/js/scroll-spy.js"></script>
+<script src="/js/zenscroll.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/app.js"></script>
+
+<!---->
+
+
+</body>
+</html>

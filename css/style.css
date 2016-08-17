@@ -1054,7 +1054,8 @@ figure.highlight {
 .highlight.css .id,
 .highlight.css .pseudo,
 .highlight .class,
-.highlight.ruby .class .title {
+.highlight.ruby .class .title,
+.highlight.xml .meta {
   color: #2973b7;
   padding: 0;
   font-size: 13px;
@@ -1066,6 +1067,12 @@ figure.highlight {
   color: #525252;
 }
 .tag .attribute {
+  color: #e96900;
+}
+.tag .name {
+  color: #2973b7;
+}
+.tag .attr {
   color: #e96900;
 }
 .highlight .addition {

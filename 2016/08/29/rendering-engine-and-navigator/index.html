@@ -1,0 +1,201 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>浏览器内核与JavaScript Navigator 对象 | ILENE&#39;S BLOG</title>
+  <meta name="author" content="Ilene Yang">
+  
+  <meta name="description" content="ilene&#39;s blog | fe developer">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="浏览器内核与JavaScript Navigator 对象"/>
+  <meta property="og:site_name" content="ILENE&#39;S BLOG"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ILENE&#39;S BLOG" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-74494633-1', 'auto');
+	ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+<body>
+  <div class="container clearfix">
+    <header id="header"><!--<a class="left-btn">-->
+  <!--<span class="icon-arrow-left"></span>-->
+<!--</a>-->
+<div id="hideLeft" class="align-left">
+  <div class="user-info clearfix">
+    <a id="menuToggle" class="menu-toggle">Menu</a>
+    <a class="user-img" href="/">
+      <img src="/images/ilene-avatar@2x.png" alt="ILENE'S BLOG">
+    </a>
+    <a class="user-img" href="/">
+      <h1>ILENE'S BLOG</h1>
+    </a>
+    <p>FE developer</p>
+  </div>
+  <div id="menu" class="menu toggle">
+    <ul class="menu-nav clearfix">
+      
+      <li class="nav"><a href="/">home</a></li>
+      
+      <li class="nav"><a href="/archives">archives</a></li>
+      
+      <li class="nav"><a id="about">about</a></li>
+    </ul>
+  </div>
+</div>
+</header>
+    <div id="content">
+      <div id="main-col"><div id="wrapper"><article class="post">
+  
+  <div class="post-content page-article clearfix">
+    <header id="scrollHeader" class="article-header">
+      
+        <time datetime="2016-08-28T17:12:35.000Z"><a href="/2016/08/29/rendering-engine-and-navigator/">Aug 29th</a></time>
+        
+  
+  <div class="tags">
+    <a href="/tags/Browser/">Browser</a>, <a href="/tags/JavaScript/">JavaScript</a>
+  </div>
+
+      <div class="clearfix"></div>
+      
+      
+    
+        <h1 class="title">浏览器内核与JavaScript Navigator 对象</h1>
+    
+
+      
+
+    </header>
+    <div class="post-main">
+      <p>浏览器内核即 rendering engine ，渲染引擎，负责解释网页语法并渲染网页，所以不同浏览器内核对网页渲染效果不同，才会有css hack来兼容不同浏览器，使其显示效果一致。</p>
+<p>##浏览器内核分类</p>
+<ul>
+<li>Trident<br>也被称为“IE内核”<br>使用Trident内核的常见浏览器有：IE系列、360浏览器（IE内核+webkit双核，Trident为兼容模式）等等</li>
+</ul>
+<a id="more"></a>
+<ul>
+<li><p>Gecko<br>也被称为FirFox内核，跨平台内核<br>使用Gecko内核的常见浏览器有：Mozilla FireFox等</p>
+</li>
+<li><p>Presto<br>Opera前内核，现已改为Goole Chrome的Blink内核</p>
+</li>
+<li><p>Webkit<br>Safari内核，Chrome内核原型<br>Webkit内核常见的浏览器有：傲游浏览器、Safari、Android默认浏览器等</p>
+</li>
+<li><p>Blink<br>Google从webkit衍生出的自己的引擎，后由Google与Opera Software共同研发<br>Blink内核浏览器：Chrome（28及往后版本）、Opera（15及往后版本）、Yandex浏览器等</p>
+</li>
+</ul>
+<p>##Navigator对象简介<br>Navigator对象包含有关浏览器以及操作系统的信息。<br>对象常用属性有</p>
+<ul>
+<li><code>appCodeName</code>   返回浏览器的代码名</li>
+<li><code>appMinorVersion</code>  返回浏览器的次级版号</li>
+<li><code>appName</code>  返回浏览器的名称</li>
+<li><code>appVersion</code>  返回浏览器的平台和版本信息</li>
+<li><code>oscpu</code>  浏览器正在运行的操作系统平台</li>
+<li><code>platform</code>  返回运行浏览器的操作系统平台</li>
+<li><code>userAgent</code>  返回由客户机发送服务器的user-agent头部的值</li>
+<li><code>plugins[]</code>  是一个Plugin对象的数组，表示浏览器已经安装的插件</li>
+</ul>
+<p>Navigator对象的方法</p>
+<ul>
+<li><code>javaEnabled()</code>  规定浏览器是否启用Java</li>
+<li><code>taintEnabled()</code>  规定浏览器是否启用数据污点</li>
+</ul>
+<p>###userAgent属性<br>userAgent 属性是一个只读的字符串，声明了浏览器用于 HTTP 请求的用户代理头的值，一般由navigator.appCodeName 的值之后加上斜线和 navigator.appVersion 的值构成的。<br>如：<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Mozilla/<span class="number">5.0</span> (Macintosh; Intel Mac OS X <span class="number">10</span>_10_2) AppleWebKit/<span class="number">537.36</span> (KHTML, like Gecko) Chrome/<span class="number">51.0</span><span class="number">.2704</span><span class="number">.106</span> Safari/<span class="number">537.36</span></div></pre></td></tr></table></figure></p>
+
+    </div>
+    <footer>
+      
+      
+  <!--<div class="addthis addthis_toolbox addthis_default_style">-->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!--<a class="addthis_counter addthis_pill_style"></a>-->
+  <!--</div>-->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["qzone","tsina","bdysc","weixin","tqq","tieba","douban","sqq","huaban","youdao","fbook","twi","linkedin","evernotecn","copy"],"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>-->
+
+    </footer>
+  </div>
+</article>
+
+<section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-rendering-engine-and-navigator" data-title="浏览器内核与JavaScript Navigator 对象" data-url="http://yilene.github.io/2016/08/29/rendering-engine-and-navigator/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"undefined"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div id="aboutDrop" class="backdrop hide">
+  <div id="aboutInfo" class="about-wrap animated bounceInDown">
+    <div class="author-img">
+      <img src="/images/avatar-author.jpg" alt="Ilene">
+    </div>
+    <div class="author-info">
+      <p>Hi I’m Ilene, a front-end developer</p>
+      <ul class="contact clearfix">
+        <li><a href="https://github.com/Yilene" target="_blank" class="link-github">github</a></li>
+        <li><a href="http://weibo.com/yilene" target="_blank" class="link-weibo">weibo</a></li>
+        <li><a href="mailto:ilene.yali@gmail.com" target="_blank" class="link-email">email</a></li>
+      </ul>
+    </div>
+    <a id="closeBtn" class="close-about">
+      <span class="close"></span>
+    </a>
+  </div>
+</div>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="/js/jquery-3.1.0.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/fastclick.js"></script>
+<script src="/js/scroll-spy.js"></script>
+<script src="/js/zenscroll.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/app.js"></script>
+
+<!---->
+
+
+</body>
+</html>

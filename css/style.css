@@ -470,55 +470,55 @@ article .post-content .article-header {
     text-align: center;
   }
 }
-article .post-content time {
+article .post-content .article-header time {
   float: left;
   padding-left: 10px;
   border-left: 2px solid #e3e4ea;
 }
-article .post-content time a {
+article .post-content .article-header time a {
   color: #4a4a4a;
   font-size: 0.9em;
 }
-article .post-content .tags {
+article .post-content .article-header .tags {
   float: left;
   margin-left: 10px;
   color: #e95787;
 }
-article .post-content .tags a {
+article .post-content .article-header .tags a {
   font-size: 0.8em;
   color: #e95787;
 }
-article .post-content .title {
+article .post-content .article-header .title {
   margin-top: 14px;
-  padding-left: 10px;
+  padding: 0 10px;
   font-size: 1.15em;
 }
 @media screen and (max-width: 930px) {
-  article .post-content .title {
+  article .post-content .article-header .title {
     margin-bottom: 12px;
     font-size: 1.4em;
   }
 }
-article .post-content .title a {
+article .post-content .article-header .title a {
   font-weight: normal;
   font-size: 1.15em;
   color: #4a4a4a;
 }
-article .post-content .title a:hover {
+article .post-content .article-header .title a:hover {
   color: #e95787;
 }
-article .post-content .read-more {
+article .post-content .article-header .read-more {
   margin-top: 30px;
   margin-right: 20px;
   padding-left: 0;
   text-align: right;
 }
 @media screen and (max-width: 930px) {
-  article .post-content .read-more {
+  article .post-content .article-header .read-more {
     text-align: center;
   }
 }
-article .post-content .read-more a {
+article .post-content .article-header .read-more a {
   padding: 6px 12px 6px;
   border-radius: 4px;
   border: 1px solid #4a4a4a;
@@ -527,7 +527,7 @@ article .post-content .read-more a {
   font-size: 14px;
   color: #4a4a4a;
 }
-article .post-content .read-more a:hover {
+article .post-content .article-header .read-more a:hover {
   text-decoration: none;
   color: #e95787;
   border-color: #e95787;

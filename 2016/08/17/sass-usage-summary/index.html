@@ -86,10 +86,47 @@
     
 
       
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">文章目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#SassScript"><span class="toc-text">SassScript</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#运算"><span class="toc-text">运算</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sass部分函数"><span class="toc-text">Sass部分函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lists与Map"><span class="toc-text">Lists与Map</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#插值"><span class="toc-text">插值#{}</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#占位符选择器-foo"><span class="toc-text">占位符选择器 %foo</span></a></li></ol>
+  </div>
+
 
     </header>
     <div class="post-main">
-      
+      <p>Sass作为CSS的预处理器，对CSS扩展允许使用更多的逻辑来编写样式，让样式代码可读性更高，功能更强大。<br>Sass最为常用的 嵌套、嵌套属性、变量就省略，总结一下其他更高级的用法和平时少用被忽略的一些用法。</p>
+<h2 id="SassScript"><a href="#SassScript" class="headerlink" title="SassScript"></a>SassScript</h2><p>SassScript可以被用在任何属性值中，允许属性使用变量、算术、函数。</p>
+<p>SassScript支持六种主要的数据类型：</p>
+<ul>
+<li>数字（如果1.2、13、10px）</li>
+<li>文本字符串，无论是否有引号（例如 “foo”、’bar’、baz）</li>
+<li>颜色（例如 blue、#04a3f9、rgba(255, 0, 0, 0.5)）</li>
+<li>布尔值（例如 true、false）</li>
+<li>空值（例如 null）</li>
+<li>值列表，用空格或逗号分隔（例如 1.5em 1em 0 2em、Helvetica, Arial, sans-serif）</li>
+</ul>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><ul>
+<li>所有数据类型都支持等式运算：<code>==</code> 和 <code>!=</code></li>
+<li>数字支持的标准运算： 加 <code>+</code>、减 <code>-</code>、乘 <code>*</code>、除 <code>/</code>和取模<code>%</code>，关系运算：<code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>,<code>&gt;=</code></li>
+<li>布尔值支持布尔运算：<code>and</code>、<code>or</code>和<code>not</code></li>
+<li>圆括号可改变运算顺序</li>
+<li>除法运算和<code>/</code>，三种情况下<code>/</code>会被解释为除法运算：<ol>
+<li>如果数值或它的任意部分是存储在一个变量中或是函数的返回值。</li>
+<li>如果数值被圆括号包围。</li>
+<li>如果数值是另一个数学表达式的一部分。<br>如：<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">font</span>: <span class="number">10px</span>/<span class="number">8px</span>;             <span class="comment">// 纯 CSS，不是除法运算</span></div><div class="line">  <span class="variable">$width</span>: <span class="number">1000px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="variable">$width</span>/<span class="number">2</span>;            <span class="comment">// 使用了变量，是除法运算</span></div><div class="line">  <span class="attribute">width</span>: round(<span class="number">1.5</span>)/<span class="number">2</span>;        <span class="comment">// 使用了函数，是除法运算</span></div><div class="line">  <span class="attribute">height</span>: (<span class="number">500px</span>/<span class="number">2</span>);          <span class="comment">// 使用了圆括号，是除法运算</span></div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">5px</span> + <span class="number">8px</span>/<span class="number">2px</span>; <span class="comment">// 使用了加（+）号，是除法运算</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+</li>
+</ul>
+<p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">font</span>: <span class="number">10px</span>/<span class="number">8px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">500px</span>;</div><div class="line">  <span class="attribute">height</span>: <span class="number">250px</span>;</div><div class="line">  <span class="attribute">margin-left</span>: <span class="number">9px</span>; &#125;</div></pre></td></tr></table></figure></p>
+<p>在纯CSS种使用变量和/，可以用<code>#{}</code>包住变量<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="variable">$font-size</span>: <span class="number">12px</span>;</div><div class="line">  <span class="variable">$line-height</span>: <span class="number">30px</span>;</div><div class="line">  <span class="attribute">font</span>: #&#123;<span class="variable">$font-size</span>&#125;/#&#123;<span class="variable">$line-height</span>&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">font</span>: <span class="number">12px</span>/<span class="number">30px</span>; &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Sass部分函数"><a href="#Sass部分函数" class="headerlink" title="Sass部分函数"></a>Sass部分函数</h3><h3 id="Lists与Map"><a href="#Lists与Map" class="headerlink" title="Lists与Map"></a>Lists与Map</h3><p>###</p>
+<h2 id="插值"><a href="#插值" class="headerlink" title="插值#{}"></a>插值<code>#{}</code></h2><p>用<code>#{}</code>在选择器或属性及属性值中插值，如：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$name</span>: foo;</div><div class="line"><span class="variable">$attr</span>: border;</div><div class="line"><span class="selector-tag">p</span>.#&#123;<span class="variable">$name</span>&#125; &#123;</div><div class="line">  #&#123;<span class="variable">$attr</span>&#125;-<span class="attribute">color</span>: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-class">.foo</span> &#123;</div><div class="line">  <span class="attribute">border-color</span>: blue; &#125;</div></pre></td></tr></table></figure></p>
+<h2 id="占位符选择器-foo"><a href="#占位符选择器-foo" class="headerlink" title="占位符选择器 %foo"></a>占位符选择器 %foo</h2><p>用<code>%</code>代替<code>#</code>或<code>.</code>，结合<code>@extend</code>指令有助于写样式库，如：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">content</span> <span class="selector-tag">a</span>%extreme &#123;</div><div class="line">	<span class="attribute">color</span>: blue;</div><div class="line">	<span class="attribute">font-weight</span>: bold;</div><div class="line">	<span class="attribute">font-size</span>: <span class="number">2em</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.notice</span>	&#123;</div><div class="line">	@<span class="keyword">extend</span> %extreme;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>编译后<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.content</span> <span class="selector-tag">a</span><span class="selector-class">.notice</span> &#123;</div><div class="line">  <span class="attribute">color</span>: blue;</div><div class="line">  <span class="attribute">font-weight</span>: bold;</div><div class="line">  <span class="attribute">font-size</span>: <span class="number">2em</span>; &#125;</div></pre></td></tr></table></figure></p>
+
     </div>
     <footer>
       

@@ -75,7 +75,7 @@
         
   
   <div class="tags">
-    <a href="/tags/css/">css</a>
+    <a href="/tags/CSS/">CSS</a>
   </div>
 
       <div class="clearfix"></div>
@@ -86,10 +86,30 @@
     
 
       
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">文章目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#属性值详解"><span class="toc-text">属性值详解</span></a></li></ol>
+  </div>
+
 
     </header>
     <div class="post-main">
-      
+      <p>平时用到的display属性值最多的就是block、inline-block、inline、none等，还有CSS3新加的flex伸缩布局，对于其他属性值是熟悉又陌生，于是有了这个总结。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>display属性用来定义建立布局时元素生成的显示框类型，在HTML中，元素默认的display属性值表现是浏览器的默认样式。<br>display可能的值：<code>none     | inline | block | inline-block |  contents | list-item | inline-list-item | table | inline-table | table-cell | table-column | table-column-group | table-footer-group | table-header-cloumn | table-row | table-row-group | table-caption | flex | inline-flex | grid | inline-grid | ruby | ruby-base| ruby-text | ruby-base-container | ruby-test-container | run in | inherit | initial | unset</code></p>
+<h2 id="属性值详解"><a href="#属性值详解" class="headerlink" title="属性值详解"></a>属性值详解</h2><ul>
+<li><p>none<br>使元素不显示</p>
+</li>
+<li><p>inline<br>使元素表现为内联元素样式，内联元素设置width和height都不起作用，设置padding和margin左右边距起作用，顶部与底部边距无效。</p>
+</li>
+<li><p>block<br>使元素表现为块级元素样式，块级元素默认占一行高度，总是从新行开始，宽高度和内外边距都可以设定。</p>
+</li>
+<li><p>list-item<br>元素为内容生成一个块框和一个独立的列表项内联框，设置list-item属性值之后可以设置list-style将元素表现为与li一样的列表项，如：</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item1&lt;<span class="keyword">div</span>&gt;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item2&lt;<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span>&#123;</div><div class="line">  <span class="attribute">display</span>: list-item;</div><div class="line">  <span class="attribute">list-style</span>: circle inside;</div><div class="line">  <span class="attribute">marin</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#9c0033</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>表现为:</p>
+
     </div>
     <footer>
       

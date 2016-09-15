@@ -83,6 +83,14 @@ a:hover {
 .clearfix:after {
   clear: both;
 }
+::selection {
+  color: #fff;
+  background: #e95787;
+}
+::-moz-selection {
+  color: #fff;
+  background: #e95787;
+}
 #content {
   margin-left: 280px;
 }

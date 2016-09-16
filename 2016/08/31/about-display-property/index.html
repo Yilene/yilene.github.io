@@ -158,25 +158,22 @@
 <li><p>ruby-base-container<br>使元素像<rbc>一样显示</rbc></p>
 </li>
 <li><p>ruby-text-container<br>使元素像<rtc>一样显示</rtc></p>
+<p>  ruby相关属性值不是特别常用，几乎没有遇到过，并且浏览器也几乎不支持。</p>
 </li>
-</ul>
-<p>ruby相关属性值不是特别常用，几乎没有遇到过，并且浏览器也几乎不支持。</p>
-<ul>
-<li>run-in<br>元素会根据上下文作为块级元素或内联元素显示：</li>
-</ul>
+<li><p>run-in<br>元素会根据上下文作为块级元素或内联元素显示：</p>
 <ol>
 <li>如果display: run-in的box包含一个display: block的box，则元素表现为display: block</li>
 <li>如果display: run-in的box后面跟着一个display为block水平的box，那么这个应用了display: run-in的box将会变成display: inline属性，同时内容嵌入到后面的display为block的box中，否则这个display: run-in的box维持其本身的block属性。</li>
-<li>如果一个display: inline的box跟着在display: run-in的box后面，那么display: run-in的box会变成display: block的属性</li>
-</ol>
+<li><p>如果一个display: inline的box跟着在display: run-in的box后面，那么display: run-in的box会变成display: block的属性</p>
 <p>不过这个属性已经不被主流浏览器支持了，所以不推荐使用。</p>
-<ul>
+</li>
+</ol>
+</li>
 <li><p>contents<br>它本身产生一个特定的框，会被子元素的盒子模型所取代。<br>这个属性也只有Firefox（Gecko内核的）浏览器支持。</p>
 </li>
-<li><p>grid、inline-grid<br>网格布局，使用display: grid定义一个网格，然后使用grid-template-columns和grid-template-rows属性创建网格，对应的各网格单元格都有列线起始线（grid-column-start）、列线终止线（grid-column-end）和行线起始线（grid-row-start）、行线终止线（grid-row-end）.</p>
+<li><p>grid、inline-grid<br>网格布局，使用display: grid定义一个网格，然后使用grid-template-columns和grid-template-rows属性创建网格，对应的各网格单元格都有列线起始线（grid-column-start）、列线终止线（grid-column-end）和行线起始线（grid-row-start）、行线终止线（grid-row-end）。如创建一个两行两列的网格：<br>  现在也只有IE内核的浏览器在支持grid。</p>
 </li>
 </ul>
-<p>现在也只有IE内核的浏览器在支持grid。</p>
 
     </div>
     <footer>

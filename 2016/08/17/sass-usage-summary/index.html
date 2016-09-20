@@ -109,23 +109,23 @@
 <h2 id="Mixin指令"><a href="#Mixin指令" class="headerlink" title="Mixin指令"></a>Mixin指令</h2><p>使用Mixin可以定义可重用的代码块，可指定参数与缺省值，用@include指令调用定义的mixin,如：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> silly-links &#123;</div><div class="line">  <span class="selector-tag">a</span> &#123;</div><div class="line">    <span class="attribute">color</span>: blue;</div><div class="line">    <span class="attribute">background-color</span>: red;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">@<span class="keyword">include</span> silly-links;</div></pre></td></tr></table></figure></p>
 <p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">a</span> &#123;</div><div class="line">  <span class="attribute">color</span>: blue;</div><div class="line">  <span class="attribute">background-color</span>: red; &#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li><p>定义的minxin内部可以调用其他minxin，但不能调用自己</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@mixin</span> compound &#123;</div><div class="line">  <span class="variable">@include</span> highlighted-background;</div><div class="line">  <span class="variable">@include</span> header-text;</div><div class="line">&#125;</div><div class="line"><span class="variable">@mixin</span> highlighted-background &#123; <span class="attribute">background-color</span>: <span class="number">#fc0</span>; &#125;</div><div class="line"><span class="variable">@mixin</span> header-text &#123; <span class="attribute">font-size</span>: <span class="number">20px</span>; &#125;</div></pre></td></tr></table></figure>
-</li>
-<li><p>minxin可设定变量缺省值，使用时根据需要加入参数，如下：</p>
-<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> icolor(<span class="variable">$color</span>: blue)&#123;</div><div class="line">  <span class="attribute">background</span>: <span class="variable">$color</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  @<span class="keyword">include</span> icolor(red);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.wrapper</span>&#123;</div><div class="line">  @<span class="keyword">include</span> icolor();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>定义的minxin内部可以调用其他minxin，但不能调用自己</li>
 </ul>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@mixin</span> compound &#123;</div><div class="line">  <span class="variable">@include</span> highlighted-background;</div><div class="line">  <span class="variable">@include</span> header-text;</div><div class="line">&#125;</div><div class="line"><span class="variable">@mixin</span> highlighted-background &#123; <span class="attribute">background-color</span>: <span class="number">#fc0</span>; &#125;</div><div class="line"><span class="variable">@mixin</span> header-text &#123; <span class="attribute">font-size</span>: <span class="number">20px</span>; &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>minxin可设定变量缺省值，使用时根据需要加入参数，如下：</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> icolor(<span class="variable">$color</span>: blue)&#123;</div><div class="line">  <span class="attribute">background</span>: <span class="variable">$color</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  @<span class="keyword">include</span> icolor(red);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.wrapper</span>&#123;</div><div class="line">  @<span class="keyword">include</span> icolor();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">  <span class="attribute">background</span>: red; &#125;</div><div class="line"></div><div class="line"><span class="selector-class">.wrapper</span> &#123;</div><div class="line">  <span class="attribute">background</span>: blue; &#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li>minxin可设定可变参数，如：<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> box-shadow(<span class="variable">$shadows</span>...) &#123;</div><div class="line">  -moz-<span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">  -webkit-<span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.shadows</span> &#123;</div><div class="line">  @<span class="keyword">include</span> box-shadow(<span class="number">0px</span> 4px 5px <span class="number">#666</span>, 2px 6px 10px <span class="number">#999</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>minxin可设定可变参数，如：</li>
 </ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">mixin</span> box-shadow(<span class="variable">$shadows</span>...) &#123;</div><div class="line">  -moz-<span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">  -webkit-<span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="variable">$shadows</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.shadows</span> &#123;</div><div class="line">  @<span class="keyword">include</span> box-shadow(<span class="number">0px</span> 4px 5px <span class="number">#666</span>, 2px 6px 10px <span class="number">#999</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>编译后为：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.shadows</span> &#123;</div><div class="line">  <span class="attribute">-moz-box-shadow</span>: <span class="number">0px</span> <span class="number">4px</span> <span class="number">5px</span> <span class="number">#666</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="number">#999</span>;</div><div class="line">  <span class="attribute">-webkit-box-shadow</span>: <span class="number">0px</span> <span class="number">4px</span> <span class="number">5px</span> <span class="number">#666</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="number">#999</span>;</div><div class="line">  <span class="attribute">box-shadow</span>: <span class="number">0px</span> <span class="number">4px</span> <span class="number">5px</span> <span class="number">#666</span>, <span class="number">2px</span> <span class="number">6px</span> <span class="number">10px</span> <span class="number">#999</span>; &#125;</div></pre></td></tr></table></figure></p>
 <ul>
-<li><code>@content</code>指令<br>调用mixin时，定义的样式会在<code>@content</code>的位置，如：<figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$color</span>: white;</div><div class="line">@<span class="keyword">mixin</span> colors(<span class="variable">$color</span>: blue) &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="variable">$color</span>;</div><div class="line">  @<span class="keyword">content</span>;</div><div class="line">  <span class="attribute">border-color</span>: <span class="variable">$color</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.colors</span> &#123;</div><div class="line">  @<span class="keyword">include</span> colors &#123; <span class="attribute">color</span>: <span class="variable">$color</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li><code>@content</code>指令</li>
 </ul>
+<p>调用mixin时，定义的样式会在<code>@content</code>的位置，如：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$color</span>: white;</div><div class="line">@<span class="keyword">mixin</span> colors(<span class="variable">$color</span>: blue) &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="variable">$color</span>;</div><div class="line">  @<span class="keyword">content</span>;</div><div class="line">  <span class="attribute">border-color</span>: <span class="variable">$color</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.colors</span> &#123;</div><div class="line">  @<span class="keyword">include</span> colors &#123; <span class="attribute">color</span>: <span class="variable">$color</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.colors</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: blue;</div><div class="line">  <span class="attribute">color</span>: white;</div><div class="line">  <span class="attribute">border-color</span>: blue; &#125;</div></pre></td></tr></table></figure></p>
 <h2 id="SassScript"><a href="#SassScript" class="headerlink" title="SassScript"></a>SassScript</h2><p>SassScript可以被用在任何属性值中，允许属性使用变量、算术、函数。</p>
 <p>SassScript支持六种主要的数据类型：</p>
@@ -136,10 +136,10 @@
 <li>布尔值（例如 true、false）</li>
 <li>空值（例如 null）</li>
 <li>值列表，用空格或逗号分隔（例如 1.5em 1em 0 2em、Helvetica, Arial, sans-serif）</li>
-<li><p>maps 键值对（例如 (key1: value, key2: value2)）</p>
-<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3></li>
-<li><p>所有数据类型都支持等式运算：<code>==</code> 和 <code>!=</code></p>
-</li>
+<li>maps 键值对（例如 (key1: value, key2: value2)）</li>
+</ul>
+<h3 id="运算"><a href="#运算" class="headerlink" title="运算"></a>运算</h3><ul>
+<li>所有数据类型都支持等式运算：<code>==</code> 和 <code>!=</code></li>
 <li>数字支持的标准运算： 加 <code>+</code>、减 <code>-</code>、乘 <code>*</code>、除 <code>/</code>和取模<code>%</code>，关系运算：<code>&lt;</code>,<code>&gt;</code>,<code>&lt;=</code>,<code>&gt;=</code></li>
 <li>布尔值支持布尔运算：<code>and</code>、<code>or</code>和<code>not</code></li>
 <li>圆括号可改变运算顺序</li>
@@ -166,71 +166,91 @@
 <p>在纯CSS种使用变量和<code>/</code>，可以用<code>#{}</code>包住变量<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="variable">$font-size</span>: <span class="number">12px</span>;</div><div class="line">  <span class="variable">$line-height</span>: <span class="number">30px</span>;</div><div class="line">  <span class="attribute">font</span>: #&#123;<span class="variable">$font-size</span>&#125;/#&#123;<span class="variable">$line-height</span>&#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">font</span>: <span class="number">12px</span>/<span class="number">30px</span>; &#125;</div></pre></td></tr></table></figure></p>
 <h3 id="Sass的一些常用函数"><a href="#Sass的一些常用函数" class="headerlink" title="Sass的一些常用函数"></a>Sass的一些常用函数</h3><h4 id="1-颜色函数"><a href="#1-颜色函数" class="headerlink" title="1. 颜色函数"></a>1. 颜色函数</h4><ul>
-<li><p>rgba($color, $alpha)<br>用纯CSS写颜色透明度总需要把16进制色值转换成10进制，用rgba($color, $alpha)函数就不用手动换算了。</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rgba(#<span class="number">102030</span>, <span class="number">0.5</span>) =&gt; rgba(<span class="number">16</span>, <span class="number">32</span>, <span class="number">48</span>, <span class="number">0.5</span>)</div><div class="line">rgba(blue, <span class="number">0.2</span>)    =&gt; rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, <span class="number">0.2</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>ie_hex_str($color)<br>转换为IE filters 理解的颜色格式</p>
-<figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ie-hex-str(rgba(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0.5</span>)) =&gt;  #<span class="number">8000</span>FF00</div></pre></td></tr></table></figure>
-</li>
+<li>rgba($color, $alpha)</li>
 </ul>
+<p>用纯CSS写颜色透明度总需要把16进制色值转换成10进制，用rgba($color, $alpha)函数就不用手动换算了。<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">rgba(#<span class="number">102030</span>, <span class="number">0.5</span>) =&gt; rgba(<span class="number">16</span>, <span class="number">32</span>, <span class="number">48</span>, <span class="number">0.5</span>)</div><div class="line">rgba(blue, <span class="number">0.2</span>)    =&gt; rgba(<span class="number">0</span>, <span class="number">0</span>, <span class="number">255</span>, <span class="number">0.2</span>)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>ie_hex_str($color)</li>
+</ul>
+<p>转换为IE filters 理解的颜色格式<br><figure class="highlight lsl"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ie-hex-str(rgba(<span class="number">0</span>, <span class="number">255</span>, <span class="number">0</span>, <span class="number">0.5</span>)) =&gt;  #<span class="number">8000</span>FF00</div></pre></td></tr></table></figure></p>
 <h4 id="2-数字函数"><a href="#2-数字函数" class="headerlink" title="2. 数字函数"></a>2. 数字函数</h4><ul>
-<li><p>percentage($number)<br>将无单位数字转换为百分比</p>
-</li>
-<li><p>round($number)<br>将$number四舍五入</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">round</span><span class="params">(<span class="number">1.4em</span>)</span></span> =&gt; <span class="number">1em</span>   <span class="comment">//可带单位</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>ceil($string)、floor($number)<br>向上取整、向下取整</p>
-</li>
-<li><p>random([$limit])<br>返回一个随机数:<br>random() 返回0到1的随机数；<br>random($limit)返回1到$limit的随机数</p>
-</li>
+<li>percentage($number)</li>
 </ul>
+<p>将无单位数字转换为百分比</p>
+<ul>
+<li>round($number)</li>
+</ul>
+<p>将$number四舍五入<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">round</span><span class="params">(<span class="number">1.4em</span>)</span></span> =&gt; <span class="number">1em</span>   <span class="comment">//可带单位</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>ceil($string)、floor($number)</li>
+</ul>
+<p>向上取整、向下取整</p>
+<ul>
+<li>random([$limit])</li>
+</ul>
+<p>返回一个随机数:<br>random() 返回0到1的随机数；<br>random($limit)返回1到$limit的随机数</p>
 <h4 id="3-字符串函数"><a href="#3-字符串函数" class="headerlink" title="3. 字符串函数"></a>3. 字符串函数</h4><ul>
-<li><p>unquote($string)、quote($string)<br>给字符串去掉、添加引号</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">unquote</span><span class="params">(<span class="string">"foo"</span>)</span></span> =&gt; foo</div><div class="line"><span class="function"><span class="title">quote</span><span class="params">(foo)</span></span> =&gt; <span class="string">"foo"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>str-length($string)<br>返回字符串的字符数</p>
-<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">str-length</span><span class="params">(<span class="string">"foo"</span>)</span></span> =&gt; <span class="number">3</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>to-upper-case($string)、to-lower-case($string)<br>将字符串转换为大写/小写</p>
-</li>
+<li>unquote($string)、quote($string)</li>
 </ul>
+<p>给字符串去掉、添加引号<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">unquote</span><span class="params">(<span class="string">"foo"</span>)</span></span> =&gt; foo</div><div class="line"><span class="function"><span class="title">quote</span><span class="params">(foo)</span></span> =&gt; <span class="string">"foo"</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>str-length($string)</li>
+</ul>
+<p>返回字符串的字符数<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">str-length</span><span class="params">(<span class="string">"foo"</span>)</span></span> =&gt; <span class="number">3</span></div></pre></td></tr></table></figure></p>
+<ul>
+<li>to-upper-case($string)、to-lower-case($string)</li>
+</ul>
+<p>将字符串转换为大写/小写</p>
 <h4 id="3-list函数"><a href="#3-list函数" class="headerlink" title="3. list函数"></a>3. list函数</h4><p>Lists在Sass里是不能改变的，所有的list函数都是返回一个新的list，所有list函数同样适用于maps</p>
 <ul>
-<li><p>length($list)<br>返回$list的长度</p>
-</li>
-<li><p>nth($list, $n)、set-nth($list, $n. $value)<br>nth($list, $n) 返回$list的第$n项<br>set-nth($list, $n. $value) 替换$list的第$n项为$value</p>
-</li>
-<li><p>join($list1, $list2, [$separator])<br>将两个列表合并为1个，$separator: comma用逗号分隔；$separator: space用空格分隔</p>
-</li>
-<li><p>index($list, $value)<br>返回$value在$list中的位置</p>
-</li>
-<li><p>list-separator($list)<br>返回$list的分隔符</p>
-</li>
+<li>length($list)</li>
 </ul>
+<p>返回$list的长度</p>
+<ul>
+<li>nth($list, $n)、set-nth($list, $n. $value)</li>
+</ul>
+<p>nth($list, $n) 返回$list的第$n项<br>set-nth($list, $n. $value) 替换$list的第$n项为$value</p>
+<ul>
+<li>join($list1, $list2, [$separator])</li>
+</ul>
+<p>将两个列表合并为1个，$separator: comma用逗号分隔；$separator: space用空格分隔</p>
+<ul>
+<li>index($list, $value)</li>
+</ul>
+<p>返回$value在$list中的位置</p>
+<ul>
+<li>list-separator($list)</li>
+</ul>
+<p>返回$list的分隔符</p>
 <h4 id="4-map函数"><a href="#4-map函数" class="headerlink" title="4. map函数"></a>4. map函数</h4><p>Maps在Sass中不可更改，所有map函数都会返回一个新的map</p>
 <ul>
-<li><p>map-get($map, $key)<br>返回map中key 为$key的值</p>
-</li>
-<li><p>map-merge($map1, $map2)<br>将两个map合并成一个新的map，$map2中的key比$map1中的优先级高</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map-merge(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">3</span>)</span>,<span class="params">(<span class="string">"bar"</span>: <span class="number">2</span>)</span>) =&gt;</span> (<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>map-remove($map, $keys…)<br>移除$map中key值为$key…的项，如：</p>
-<figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map-remove((<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>, <span class="string">"baz"</span>: <span class="number">3</span>), <span class="string">"bar"</span>, <span class="string">"baz"</span>) =&gt; (<span class="string">"foo"</span>: <span class="number">1</span>)</div></pre></td></tr></table></figure>
-</li>
-<li><p>map-keys($map)、map-values($map)<br>map-keys($map) 返回一个包含$map所有key 的list<br>map-values($map) 返回一个包含$map所有value 的list</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map-keys(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>)</span>) =&gt;</span> <span class="string">"foo"</span>, <span class="string">"bar"</span></div><div class="line">map-values(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>, <span class="string">"baz"</span>: <span class="number">1</span>)</span>) =&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span></div></pre></td></tr></table></figure>
-</li>
+<li>map-get($map, $key)</li>
 </ul>
+<p>返回map中key 为$key的值</p>
+<ul>
+<li>map-merge($map1, $map2)</li>
+</ul>
+<p>将两个map合并成一个新的map，$map2中的key比$map1中的优先级高<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map-merge(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">3</span>)</span>,<span class="params">(<span class="string">"bar"</span>: <span class="number">2</span>)</span>) =&gt;</span> (<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>map-remove($map, $keys…)</li>
+</ul>
+<p>移除$map中key值为$key…的项，如：<br><figure class="highlight lisp"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">map-remove((<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>, <span class="string">"baz"</span>: <span class="number">3</span>), <span class="string">"bar"</span>, <span class="string">"baz"</span>) =&gt; (<span class="string">"foo"</span>: <span class="number">1</span>)</div></pre></td></tr></table></figure></p>
+<ul>
+<li>map-keys($map)、map-values($map)</li>
+</ul>
+<p>map-keys($map) 返回一个包含$map所有key 的list<br>map-values($map) 返回一个包含$map所有value 的list<br><figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">map-keys(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>)</span>) =&gt;</span> <span class="string">"foo"</span>, <span class="string">"bar"</span></div><div class="line">map-values(<span class="function"><span class="params">(<span class="string">"foo"</span>: <span class="number">1</span>, <span class="string">"bar"</span>: <span class="number">2</span>, <span class="string">"baz"</span>: <span class="number">1</span>)</span>) =&gt;</span> <span class="number">1</span>, <span class="number">2</span>, <span class="number">1</span></div></pre></td></tr></table></figure></p>
 <h4 id="5-Introspection-函数"><a href="#5-Introspection-函数" class="headerlink" title="5. Introspection 函数"></a>5. Introspection 函数</h4><ul>
-<li>call($name, $args…)<br>动态调用一个Sass函数<figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">call</span><span class="params">(rgb, <span class="number">10</span>, <span class="number">100</span>, <span class="number">255</span>)</span></span> =&gt; <span class="number">#0a64ff</span></div><div class="line"><span class="function"><span class="title">call</span><span class="params">(scale-color, <span class="number">#0a64ff</span>, <span class="variable">$lightness</span>: -<span class="number">10%</span>)</span></span> =&gt; <span class="number">#0058ef</span></div></pre></td></tr></table></figure>
-</li>
+<li>call($name, $args…)</li>
 </ul>
+<p>动态调用一个Sass函数<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="title">call</span><span class="params">(rgb, <span class="number">10</span>, <span class="number">100</span>, <span class="number">255</span>)</span></span> =&gt; <span class="number">#0a64ff</span></div><div class="line"><span class="function"><span class="title">call</span><span class="params">(scale-color, <span class="number">#0a64ff</span>, <span class="variable">$lightness</span>: -<span class="number">10%</span>)</span></span> =&gt; <span class="number">#0058ef</span></div></pre></td></tr></table></figure></p>
 <h4 id="6-Miscellaneous函数"><a href="#6-Miscellaneous函数" class="headerlink" title="6. Miscellaneous函数"></a>6. Miscellaneous函数</h4><p>Miscellaneous 函数称为三元条件函数</p>
 <ul>
-<li>if($condition, $if-true, $if-false)<br>当条件$condition为true时，返回$if-true，当$condition为false时，返回$if-false</li>
+<li>if($condition, $if-true, $if-false)</li>
 </ul>
+<p>当条件$condition为true时，返回$if-true，当$condition为false时，返回$if-false</p>
 <figure class="highlight dart"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(<span class="keyword">true</span>, <span class="number">1</span>px, <span class="number">2</span>px) =&gt; <span class="number">1</span>px</div><div class="line"><span class="keyword">if</span>(<span class="keyword">false</span>, <span class="number">1</span>px, <span class="number">2</span>px) =&gt; <span class="number">2</span>px</div></pre></td></tr></table></figure>
-<h4 id="7-自定义函数"><a href="#7-自定义函数" class="headerlink" title="7. 自定义函数"></a>7. 自定义函数</h4><p>当Sass提供的基本函数不满足需求时，可以像编写js函数一样自己编写函数，如简单的示例：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">function</span> double($num) &#123;</div><div class="line">	@<span class="keyword">return</span> $num1 * <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="built_in">double</span>(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="7-自定义函数"><a href="#7-自定义函数" class="headerlink" title="7. 自定义函数"></a>7. 自定义函数</h4><p>当Sass提供的基本函数不满足需求时，可以像编写js函数一样自己编写函数，如简单的示例：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">function</span> double($num) &#123;</div><div class="line">	@<span class="keyword">return</span> $num1 * <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.container</span> &#123;</div><div class="line">	<span class="attribute">width</span>: <span class="built_in">double</span>(100px);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h2 id="插值"><a href="#插值" class="headerlink" title="插值#{}"></a>插值<code>#{}</code></h2><p>用<code>#{}</code>在选择器或属性及属性值中插值，如：<br><figure class="highlight scss"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="variable">$name</span>: foo;</div><div class="line"><span class="variable">$attr</span>: border;</div><div class="line"><span class="selector-tag">p</span>.#&#123;<span class="variable">$name</span>&#125; &#123;</div><div class="line">  #&#123;<span class="variable">$attr</span>&#125;-<span class="attribute">color</span>: blue;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>编译后：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="selector-tag">p</span><span class="selector-class">.foo</span> &#123;</div><div class="line">  <span class="attribute">border-color</span>: blue; &#125;</div></pre></td></tr></table></figure></p>
 <h2 id="SassScript中的-amp"><a href="#SassScript中的-amp" class="headerlink" title="SassScript中的&amp;"></a>SassScript中的<code>&amp;</code></h2><p>&amp;在SassScript中代表当前的父选择器，如：用mixin来检测是否存在父选择器<br><figure class="highlight less"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="variable">@mixin</span> does-parent-exist &#123;</div><div class="line">  <span class="variable">@if</span> &amp; &#123;</div><div class="line">    <span class="selector-tag">&amp;</span><span class="selector-pseudo">:hover</span> &#123;</div><div class="line">      <span class="attribute">color</span>: red;</div><div class="line">    &#125;</div><div class="line">  &#125; <span class="variable">@else</span> &#123;</div><div class="line">    <span class="selector-tag">a</span> &#123;</div><div class="line">      <span class="attribute">color</span>: red;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>

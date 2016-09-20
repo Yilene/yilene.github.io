@@ -96,87 +96,126 @@
     <div class="post-main">
       <p>平时用到的display属性值最多的就是block、inline-block、inline、none等，还有CSS3新加的flex伸缩布局，对于其他属性值是熟悉又陌生，于是有了这个总结。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>display属性用来定义建立布局时元素生成的显示框类型，在HTML中，元素默认的display属性值表现是浏览器的默认样式。<br>display可能的值：<code>none     | inline | block | inline-block |  contents | list-item | inline-list-item | table | table-cell | table-column | table-column-group | table-footer-group | table-header-cloumn | table-row | table-row-group | table-caption | flex | inline-flex | grid | inline-grid | ruby | ruby-base| ruby-text | ruby-base-container | ruby-test-container | run in | inherit | initial | unset</code></p>
+<a id="more"></a>
 <h2 id="属性值详解"><a href="#属性值详解" class="headerlink" title="属性值详解"></a>属性值详解</h2><h3 id="常用属性值"><a href="#常用属性值" class="headerlink" title="常用属性值"></a>常用属性值</h3><ul>
-<li><p>none<br>使元素不显示</p>
-</li>
-<li><p>inline<br>使元素表现为内联元素样式，内联元素设置width和height都不起作用，设置padding和margin左右边距起作用，顶部与底部边距无效。</p>
-</li>
-<li><p>block<br>使元素表现为块级元素样式，块级元素默认占一行高度，总是从新行开始，宽高度和内外边距都可以设定。</p>
-</li>
-<li><p>inline-block<br>将元素表现为块级内联元素样式，可以设置padding/margin/width/height，但不会独占一行。</p>
-</li>
+<li>none</li>
 </ul>
+<p>使元素不显示</p>
+<ul>
+<li>inline</li>
+</ul>
+<p>使元素表现为内联元素样式，内联元素设置width和height都不起作用，设置padding和margin左右边距起作用，顶部与底部边距无效。</p>
+<ul>
+<li>block</li>
+</ul>
+<p>使元素表现为块级元素样式，块级元素默认占一行高度，总是从新行开始，宽高度和内外边距都可以设定。</p>
+<ul>
+<li>inline-block</li>
+</ul>
+<p>将元素表现为块级内联元素样式，可以设置padding/margin/width/height，但不会独占一行。</p>
 <h3 id="列表相关属性值"><a href="#列表相关属性值" class="headerlink" title="列表相关属性值"></a>列表相关属性值</h3><ul>
-<li>list-item<br>元素为内容生成一个块框和一个独立的列表项内联框，设置list-item属性值之后可以设置list-style将元素表现为与li一样的列表项，如：<figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item1&lt;<span class="keyword">div</span>&gt;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item2&lt;<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
-</li>
+<li>list-item</li>
 </ul>
+<p>元素为内容生成一个块框和一个独立的列表项内联框，设置list-item属性值之后可以设置list-style将元素表现为与li一样的列表项，如：<br><figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item1&lt;<span class="keyword">div</span>&gt;</div><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"item"</span>&gt;item2&lt;<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.item</span>&#123;</div><div class="line">  <span class="attribute">display</span>: list-item;</div><div class="line">  <span class="attribute">list-style</span>: circle inside;</div><div class="line">  <span class="attribute">marin</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">  <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#9c0033</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>表现为:<br><img src="http://oc9f160az.bkt.clouddn.com/Artboard%208.png" alt="list-item"></p>
-<p>-inline-list-item<br>和list-item一样，不过，它将list-sytle-position设为inside，几乎所有浏览器都不支持这个属性值。</p>
+<p>-inline-list-item</p>
+<p>和list-item一样，不过，它将list-sytle-position设为inside，几乎所有浏览器都不支持这个属性值。</p>
 <h3 id="表格相关属性值："><a href="#表格相关属性值：" class="headerlink" title="表格相关属性值："></a>表格相关属性值：</h3><ul>
-<li><p>table<br>table属性值能让元素和它的子节点像table元素一样，使用基于表格的布局，可以轻松定义一个单元格的边界、背景等样式。</p>
-</li>
-<li><p>table-row-group<br>使元素作为一个或多个行的分组来显示，类似<tbody></tbody></p>
-</li>
-<li><p>table-header-group<br>使元素作为一个或多个行的分组来显示，类似 <thead></thead></p>
-</li>
-<li><p>table-footer-group<br>使元素作为一个或多个行的分组来显示，类似 <tfoot></tfoot></p>
-</li>
-<li><p>table-row<br>使元素作为一个表格行显示，类似 <tr></tr></p>
-</li>
-<li><p>table-column-group<br>使元素作为一个或多个列的分组来显示，类似 <colgroup></colgroup></p>
-</li>
-<li><p>table-column<br>使元素作为一个单元格列显示，类似 <col></p>
-</li>
-<li><p>table-cell<br>使元素作为一个表格单元格显示，类似 <td> 和 <th></th></td></p>
-</li>
-<li><p>table-caption<br>使元素作为一个表格标题显示，类似 <caption></caption></p>
-</li>
+<li>table</li>
 </ul>
+<p>table属性值能让元素和它的子节点像table元素一样，使用基于表格的布局，可以轻松定义一个单元格的边界、背景等样式。</p>
+<ul>
+<li>table-row-group</li>
+</ul>
+<p>使元素作为一个或多个行的分组来显示，类似<tbody></tbody></p>
+<ul>
+<li>table-header-group</li>
+</ul>
+<p>使元素作为一个或多个行的分组来显示，类似 <thead></thead></p>
+<ul>
+<li>table-footer-group</li>
+</ul>
+<p>使元素作为一个或多个行的分组来显示，类似 <tfoot></tfoot></p>
+<ul>
+<li>table-row</li>
+</ul>
+<p>使元素作为一个表格行显示，类似 <tr></tr></p>
+<ul>
+<li>table-column-group</li>
+</ul>
+<p>使元素作为一个或多个列的分组来显示，类似 <colgroup></colgroup></p>
+<ul>
+<li>table-column</li>
+</ul>
+<p>使元素作为一个单元格列显示，类似 <col></p>
+<ul>
+<li>table-cell</li>
+</ul>
+<p>使元素作为一个表格单元格显示，类似 <td> 和 <th></th></td></p>
+<ul>
+<li>table-caption</li>
+</ul>
+<p>使元素作为一个表格标题显示，类似 <caption></caption></p>
 <p>用这些表格相关的属性值可以使用其他元素制作出表格，栅格布局等。</p>
 <h3 id="弹性伸缩布局相关"><a href="#弹性伸缩布局相关" class="headerlink" title="弹性伸缩布局相关"></a>弹性伸缩布局相关</h3><ul>
-<li>flex<br>将容器设置为块伸缩容器。如用伸缩布局轻松“圣杯布局”，示例如下：<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">header</span>&gt;</span>header<span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">article</span>&gt;</span>article<span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">nav</span>&gt;</span>nav<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">aside</span>&gt;</span>aside<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">footer</span>&gt;</span>footer<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure>
-</li>
+<li>flex</li>
 </ul>
+<p>将容器设置为块伸缩容器。如用伸缩布局轻松“圣杯布局”，示例如下：<br><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">header</span>&gt;</span>header<span class="tag">&lt;/<span class="name">header</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">section</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">article</span>&gt;</span>article<span class="tag">&lt;/<span class="name">article</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">nav</span>&gt;</span>nav<span class="tag">&lt;/<span class="name">nav</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">aside</span>&gt;</span>aside<span class="tag">&lt;/<span class="name">aside</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">section</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">footer</span>&gt;</span>footer<span class="tag">&lt;/<span class="name">footer</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div></pre></td></tr></table></figure></p>
 <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">*&#123;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">	<span class="attribute">box-sizing</span>: border-box;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">html</span>,<span class="selector-tag">body</span>&#123;</div><div class="line">	<span class="attribute">height</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">body</span>&#123;</div><div class="line">	<span class="attribute">min-width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">display</span>: -webkit-flex;</div><div class="line">	<span class="attribute">display</span>: flex;</div><div class="line">	<span class="attribute">-webkit-flex-flow</span>: column wrap;</div><div class="line">	<span class="attribute">flex-flow</span>: column wrap;</div><div class="line">	<span class="attribute">-webkit-justify-content</span>: start;</div><div class="line">	<span class="attribute">justify-content</span>: start;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">header</span>,<span class="selector-tag">section</span>,<span class="selector-tag">nav</span>,<span class="selector-tag">aside</span>,<span class="selector-tag">footer</span>&#123;</div><div class="line">	<span class="attribute">display</span>: block;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">header</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#f39800</span>;</div><div class="line">	<span class="attribute">min-height</span>: <span class="number">100px</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">10px</span> <span class="number">20px</span>;</div><div class="line">	<span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">1</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">section</span>&#123;</div><div class="line">	<span class="attribute">min-width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">margin</span>: <span class="number">20px</span> <span class="number">0</span>;</div><div class="line">	<span class="attribute">display</span>: -webkit-flex;</div><div class="line">	<span class="attribute">display</span>: flex;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">2</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">2</span>;</div><div class="line">	<span class="attribute">-webkit-flex</span>: <span class="number">1</span>;</div><div class="line">	<span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="selector-tag">nav</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#f1f1f1</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">1%</span>;</div><div class="line">	<span class="attribute">width</span>: <span class="number">220px</span>;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">1</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">1</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="selector-tag">article</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#F88080</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">1%</span>;</div><div class="line">	<span class="attribute">margin-left</span>: <span class="number">2%</span>;</div><div class="line">	<span class="attribute">margin-right</span>: <span class="number">2%</span>;</div><div class="line">	<span class="attribute">-webkit-flex</span>: <span class="number">1</span>;</div><div class="line">	<span class="attribute">flex</span>: <span class="number">1</span>;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">2</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-tag">aside</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#09BD83</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">1%</span>;</div><div class="line">	<span class="attribute">width</span>: <span class="number">220px</span>;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">3</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">3</span>;</div><div class="line"></div><div class="line">&#125;</div><div class="line"><span class="selector-tag">footer</span>&#123;</div><div class="line">	<span class="attribute">background-color</span>: <span class="number">#999</span>;</div><div class="line">	<span class="attribute">min-height</span>: <span class="number">60px</span>;</div><div class="line">	<span class="attribute">padding</span>: <span class="number">1%</span>;</div><div class="line">	<span class="attribute">min-width</span>: <span class="number">100%</span>;</div><div class="line">	<span class="attribute">-webkit-order</span>: <span class="number">3</span>;</div><div class="line">	<span class="attribute">order</span>: <span class="number">3</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>最终表现如下：<br><img src="http://oc9f160az.bkt.clouddn.com/Artboard%209.png" alt="圣杯布局"></p>
 <ul>
-<li><p>inline-flex<br>将容器设置为内联伸缩容器。</p>
-</li>
-<li><p>box / inline-box / flexbox / inline-flexbox<br>旧版伸缩布局语法</p>
-</li>
+<li>inline-flex</li>
 </ul>
+<p>将容器设置为内联伸缩容器。</p>
+<ul>
+<li>box / inline-box / flexbox / inline-flexbox</li>
+</ul>
+<p>旧版伸缩布局语法</p>
 <h3 id="浏览器几乎不支持的属性值"><a href="#浏览器几乎不支持的属性值" class="headerlink" title="浏览器几乎不支持的属性值"></a>浏览器几乎不支持的属性值</h3><p>ruby相关属性值：</p>
 <ul>
-<li><p>ruby<br>使元素像<ruby>元素一样显示，并且根据ruby格式模型显示元素内容</ruby></p>
-</li>
-<li><p>ruby-base<br>使元素像<rb>一样显示</rb></p>
-</li>
-<li><p>ruby-text<br>使元素像<rt>一样显示</rt></p>
-</li>
-<li><p>ruby-base-container<br>使元素像<rbc>一样显示</rbc></p>
-</li>
-<li><p>ruby-text-container<br>使元素像<rtc>一样显示</rtc></p>
-<p>  ruby相关属性值不是特别常用，几乎没有遇到过，并且浏览器也几乎不支持。</p>
-</li>
-<li><p>run-in<br>元素会根据上下文作为块级元素或内联元素显示：</p>
-<ol>
-<li>如果display: run-in的box包含一个display: block的box，则元素表现为display: block</li>
-<li>如果display: run-in的box后面跟着一个display为block水平的box，那么这个应用了display: run-in的box将会变成display: inline属性，同时内容嵌入到后面的display为block的box中，否则这个display: run-in的box维持其本身的block属性。</li>
-<li><p>如果一个display: inline的box跟着在display: run-in的box后面，那么display: run-in的box会变成display: block的属性</p>
-<p>不过这个属性已经不被主流浏览器支持了，所以不推荐使用。</p>
-</li>
-</ol>
-</li>
-<li><p>contents<br>它本身产生一个特定的框，会被子元素的盒子模型所取代。<br>这个属性也只有Firefox（Gecko内核的）浏览器支持。</p>
-</li>
-<li><p>grid、inline-grid<br>网格布局，使用display: grid定义一个网格，然后使用grid-template-columns和grid-template-rows属性创建网格，对应的各网格单元格都有列线起始线（grid-column-start）、列线终止线（grid-column-end）和行线起始线（grid-row-start）、行线终止线（grid-row-end）。如创建一个两行两列的网格：<br>  现在也只有IE内核的浏览器在支持grid，如下，在IE中：</p>
-  <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"wrapper"</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell a"</span>&gt;A&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell b"</span>&gt;B&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell c"</span>&gt;C&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell d"</span>&gt;D&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  	&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure>
-  <figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span>&#123;</div><div class="line">			<span class="attribute">background-color</span>: <span class="number">#f1f1f1</span>;</div><div class="line">			<span class="attribute">display</span>: -ms-grid;</div><div class="line">			<span class="attribute">display</span>: grid;</div><div class="line">			<span class="attribute">-ms-grid-template-columns</span>: <span class="number">100px</span> <span class="number">10px</span> <span class="number">100px</span>;</div><div class="line">			<span class="attribute">-ms-grid-template-rows</span>: auto <span class="number">10px</span> auto;</div><div class="line">			<span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">10px</span> <span class="number">100px</span>;</div><div class="line">			<span class="attribute">grid-template-rows</span>: auto <span class="number">10px</span> auto;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.cell</span>&#123;</div><div class="line">			<span class="attribute">background-color</span>: <span class="number">#9c0033</span>;</div><div class="line">		    <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">		    <span class="attribute">font-size</span>: <span class="number">150%</span>;</div><div class="line">		    <span class="attribute">margin</span>: <span class="number">20px</span>;</div><div class="line">		    <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">		    <span class="attribute">text-align</span>: center;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.a</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">2</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.b</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.c</span> &#123;</div><div class="line">	    	<span class="attribute">-ms-grid-column</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</div><div class="line">	    	<span class="attribute">grid-column-end</span>: <span class="number">2</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">4</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.d</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">4</span>;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
-<p>  IE10、IE11支持网格布局，但暂时还不支持grid-template-columns、grid-template-rows、grid-column-start、 grid-column-end、grid-row-start、grid-row-end，他是根据-ms-grid-column来确定元素在网格中所处的位置，上面代码在IE11中表现如下：<br>  <img src="http://oc9f160az.bkt.clouddn.com/WechatIMG34.jpeg" alt="grid布局"></p>
-</li>
+<li>ruby</li>
 </ul>
-<p>参阅：<br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="external">MDN开发者文档</a></p>
+<p>使元素像<ruby>元素一样显示，并且根据ruby格式模型显示元素内容</ruby></p>
+<ul>
+<li>ruby-base</li>
+</ul>
+<p>使元素像<rb>一样显示</rb></p>
+<ul>
+<li>ruby-text</li>
+</ul>
+<p>使元素像<rt>一样显示</rt></p>
+<ul>
+<li>ruby-base-container</li>
+</ul>
+<p>使元素像<rbc>一样显示</rbc></p>
+<ul>
+<li>ruby-text-container</li>
+</ul>
+<p>使元素像<rtc>一样显示</rtc></p>
+<pre><code>ruby相关属性值不是特别常用，几乎没有遇到过，并且浏览器也几乎不支持。
+</code></pre><ul>
+<li>run-in</li>
+</ul>
+<p>元素会根据上下文作为块级元素或内联元素显示：</p>
+<pre><code>1.  如果display: run-in的box包含一个display: block的box，则元素表现为display: block
+2.  如果display: run-in的box后面跟着一个display为block水平的box，那么这个应用了display: run-in的box将会变成display: inline属性，同时内容嵌入到后面的display为block的box中，否则这个display: run-in的box维持其本身的block属性。
+3.  如果一个display: inline的box跟着在display: run-in的box后面，那么display: run-in的box会变成display: block的属性
+
+不过这个属性已经不被主流浏览器支持了，所以不推荐使用。
+</code></pre><ul>
+<li>contents</li>
+</ul>
+<p>它本身产生一个特定的框，会被子元素的盒子模型所取代。<br>这个属性也只有Firefox（Gecko内核的）浏览器支持。</p>
+<ul>
+<li>grid、inline-grid</li>
+</ul>
+<p>网格布局，使用display: grid定义一个网格，然后使用grid-template-columns和grid-template-rows属性创建网格，对应的各网格单元格都有列线起始线（grid-column-start）、列线终止线（grid-column-end）和行线起始线（grid-row-start）、行线终止线（grid-row-end）。如创建一个两行两列的网格：<br>    现在也只有IE内核的浏览器在支持grid，如下，在IE中：<br>    <figure class="highlight applescript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"wrapper"</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell a"</span>&gt;A&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell b"</span>&gt;B&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell c"</span>&gt;C&lt;/<span class="keyword">div</span>&gt;</div><div class="line">	    &lt;<span class="keyword">div</span> <span class="built_in">class</span>=<span class="string">"cell d"</span>&gt;D&lt;/<span class="keyword">div</span>&gt;</div><div class="line">  	&lt;/<span class="keyword">div</span>&gt;</div></pre></td></tr></table></figure></p>
+<pre><code><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.wrapper</span>&#123;</div><div class="line">			<span class="attribute">background-color</span>: <span class="number">#f1f1f1</span>;</div><div class="line">			<span class="attribute">display</span>: -ms-grid;</div><div class="line">			<span class="attribute">display</span>: grid;</div><div class="line">			<span class="attribute">-ms-grid-template-columns</span>: <span class="number">100px</span> <span class="number">10px</span> <span class="number">100px</span>;</div><div class="line">			<span class="attribute">-ms-grid-template-rows</span>: auto <span class="number">10px</span> auto;</div><div class="line">			<span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">10px</span> <span class="number">100px</span>;</div><div class="line">			<span class="attribute">grid-template-rows</span>: auto <span class="number">10px</span> auto;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.cell</span>&#123;</div><div class="line">			<span class="attribute">background-color</span>: <span class="number">#9c0033</span>;</div><div class="line">		    <span class="attribute">color</span>: <span class="number">#fff</span>;</div><div class="line">		    <span class="attribute">font-size</span>: <span class="number">150%</span>;</div><div class="line">		    <span class="attribute">margin</span>: <span class="number">20px</span>;</div><div class="line">		    <span class="attribute">padding</span>: <span class="number">20px</span>;</div><div class="line">		    <span class="attribute">text-align</span>: center;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.a</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">2</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.b</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">1</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">2</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.c</span> &#123;</div><div class="line">	    	<span class="attribute">-ms-grid-column</span>: <span class="number">1</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</div><div class="line">	    	<span class="attribute">grid-column-end</span>: <span class="number">2</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">4</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="selector-class">.d</span> &#123;</div><div class="line">		    <span class="attribute">-ms-grid-column</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-column-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-column-end</span>: <span class="number">4</span>;</div><div class="line">		    <span class="attribute">-ms-grid-row</span>: <span class="number">3</span>;</div><div class="line">	        <span class="attribute">grid-row-start</span>: <span class="number">3</span>;</div><div class="line">		    <span class="attribute">grid-row-end</span>: <span class="number">4</span>;</div><div class="line">		&#125;</div></pre></td></tr></table></figure>
+
+IE10、IE11支持网格布局，但暂时还不支持grid-template-columns、grid-template-rows、grid-column-start、 grid-column-end、grid-row-start、grid-row-end，他是根据-ms-grid-column来确定元素在网格中所处的位置，上面代码在IE11中表现如下：
+![grid布局](http://oc9f160az.bkt.clouddn.com/WechatIMG34.jpeg)
+</code></pre><p>参阅：<br><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display" target="_blank" rel="external">MDN开发者文档</a></p>
 
     </div>
     <footer>

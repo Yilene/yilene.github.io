@@ -168,7 +168,7 @@ article ul li {
 }
 article ul li:before {
   position: absolute;
-  top: 12px;
+  top: 13px;
   left: -2px;
   width: 4px;
   height: 4px;
@@ -177,8 +177,36 @@ article ul li:before {
   border-radius: 50%;
   background: #bbb;
 }
+article ul li:only-child {
+  margin-left: -18px;
+  margin-top: 10px;
+  font-weight: bold;
+}
+article ul li:only-child:before {
+  top: 2px;
+  width: 4px;
+  height: 16px;
+  border-radius: 0;
+  background-color: #d3d3d3;
+}
+article ul li li:only-child {
+  font-weight: normal;
+}
+article ul li li:only-child:before {
+  width: 0;
+  height: 0;
+}
+article ul li ol {
+  padding-left: 0;
+}
+article ul li ol li {
+  list-style-type: none;
+}
+article ol li {
+  list-style-type: decimal;
+}
 article p + ul {
-  margin-top: -10px;
+  margin-top: 0;
 }
 article ul + p {
   margin-top: 25px;
@@ -187,11 +215,14 @@ article ol {
   padding-left: 20px;
 }
 article blockquote {
-  margin: 0;
-  padding: 2px 30px;
+  margin: 10px 0;
+  padding: 12px 30px;
   color: #555;
   border-left: 6px solid #eee;
   background: #fafafa;
+}
+article blockquote p {
+  margin-bottom: 0;
 }
 .left-btn {
   position: absolute;

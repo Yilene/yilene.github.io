@@ -1,0 +1,231 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>页面呈现过程中的前端性能优化点 | ILENE&#39;S BLOG</title>
+  <meta name="author" content="Ilene Yang">
+  
+  <meta name="description" content="ilene&#39;s blog | fe developer">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="页面呈现过程中的前端性能优化点"/>
+  <meta property="og:site_name" content="ILENE&#39;S BLOG"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="ILENE&#39;S BLOG" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-74494633-1', 'auto');
+	ga('send', 'pageview');
+
+</script>
+
+
+</head>
+
+<body>
+  <div class="container clearfix">
+    <header id="header"><!--<a class="left-btn">-->
+  <!--<span class="icon-arrow-left"></span>-->
+<!--</a>-->
+<div id="hideLeft" class="align-left">
+  <div class="user-info clearfix">
+    <a id="menuToggle" class="menu-toggle">Menu</a>
+    <a class="user-img" href="/">
+      <img src="/images/ilene-avatar@2x.png" alt="ILENE'S BLOG">
+    </a>
+    <a class="user-img" href="/">
+      <h1>ILENE'S BLOG</h1>
+    </a>
+    <p>FE developer</p>
+  </div>
+  <div id="menu" class="menu toggle">
+    <ul class="menu-nav clearfix">
+      
+      <li class="nav"><a href="/">home</a></li>
+      
+      <li class="nav"><a href="/archives">archives</a></li>
+      
+      <li class="nav"><a id="about">about</a></li>
+    </ul>
+  </div>
+</div>
+</header>
+    <div id="content">
+      <div id="main-col"><div id="wrapper"><article class="post">
+  
+  <div class="post-content page-article clearfix">
+    <header id="scrollHeader" class="article-header">
+      
+        <time datetime="2016-09-02T03:30:17.000Z"><a href="/2016/09/02/performance-optimization/">Sep 2nd</a></time>
+        
+  
+  <div class="tags">
+    <a href="/tags/性能/">性能</a>, <a href="/tags/优化/">优化</a>
+  </div>
+
+      <div class="clearfix"></div>
+      
+      
+    
+        <h1 class="title">页面呈现过程中的前端性能优化点</h1>
+    
+
+      
+  <div id="toc" class="toc-article">
+    <!--<strong class="toc-title">文章目录</strong>-->
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器请求过程"><span class="toc-text">浏览器请求过程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1、cookie-free"><span class="toc-text">1、cookie free</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2、domain-hash"><span class="toc-text">2、domain hash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3、css-sprites"><span class="toc-text">3、css sprites</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4、js-css-combine"><span class="toc-text">4、js/css combine</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5、max-expires-time"><span class="toc-text">5、max expires time</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6、loading-images-on-demand"><span class="toc-text">6、loading images on demand</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#资源加载"><span class="toc-text">资源加载</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#浏览器渲染页面"><span class="toc-text">浏览器渲染页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#渲染过程"><span class="toc-text">渲染过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#重绘和重排"><span class="toc-text">重绘和重排</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#针对渲染的优化方法"><span class="toc-text">针对渲染的优化方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#PageSpeed"><span class="toc-text">PageSpeed</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#最后"><span class="toc-text">最后</span></a></li></ol>
+  </div>
+
+
+    </header>
+    <div class="post-main">
+      <p>前端性能优化是使 页面 更快、更好、无错误、用户操作更流畅、体验更好。</p>
+<p>从用户输入URL到页面整个呈现在用户眼前，还有用户交互的过程都是性能优化的切入点。</p>
+<h2 id="浏览器请求过程"><a href="#浏览器请求过程" class="headerlink" title="浏览器请求过程"></a>浏览器请求过程</h2><p>当浏览器请求一个URL的时候，会经过以下过程：阻挡、域名解析、建立连接、发送请求、等待响应、接收数据。</p>
+<p>阻挡：不同浏览器对于单个域名的最大并发连接数有一定的限制，如果浏览器同时对某个域名发起多个请求，超多限制就会出现等待，也就是阻挡。</p>
+<p> <a href="https://www.zhihu.com/question/20474326/answer/15696641" target="_blank" rel="external">以下和浏览器并发相关的性能优化技术 参阅知乎黄良懿的答案。</a></p>
+<p>和并发资源数有关的性能优化技术：<br>domain hash, cookie free, css sprites, js/css combine, max expires time, loading images on demand</p>
+<h3 id="1、cookie-free"><a href="#1、cookie-free" class="headerlink" title="1、cookie free"></a>1、cookie free</h3><blockquote>
+<p>启用和主站不同的域名来放置静态资源，减少不必要的cookie发送</p>
+</blockquote>
+<p>按照普通设计，当网站cookie信息有1 KB、网站首页共150个资源时，用户在请求过程中需要发送150 KB的cookie信息，在512 Kbps的常见上行带宽下，需要长达3秒左右才能全部发送完毕。 尽管这个过程可以和页面下载不同资源的时间并发，但毕竟对速度造成了影响。 而且这些信息在js/css/images/flash等静态资源上，几乎是没有任何必要的。 解决方案是启用和主站不同的域名来放置静态资源，也就是cookie free。</p>
+<h3 id="2、domain-hash"><a href="#2、domain-hash" class="headerlink" title="2、domain hash"></a>2、domain hash</h3><blockquote>
+<p>由于浏览器对于单个域名的并发数限制，可以使用多个域名加大浏览器并发量</p>
+</blockquote>
+<p>将css放置在页面最上方应该是很自然的习惯，但第一个css内引入的图片下载是有可能堵塞后续的其他js的下载的。而在目前普遍过百的整页请求数的前提下，浏览器提供的仅仅数个并发，对于进行了良好优化甚至是前面有CDN的系统而言，是极大的性能瓶颈。 这也就衍生了domain hash技术来使用多个域名加大并发量（因为浏览器是基于domain的并发控制，而不是page），不过过多的散布会导致DNS解析上付出额外的代价，所以一般也是控制在2-4之间。 这里常见的一个性能小坑是没有机制去确保URL的哈希一致性（即同一个静态资源应该被哈希到同一个域名下），而导致资源被多次下载。</p>
+<h3 id="3、css-sprites"><a href="#3、css-sprites" class="headerlink" title="3、css sprites"></a>3、css sprites</h3><blockquote>
+<p>通过使用css sprites减少请求总数。</p>
+</blockquote>
+<p>再怎么提速，页面上过百的总资源数也仍然是很可观的，如果能将其中一些很多页面都用到的元素如常用元素如按钮、导航、Tab等的背景图，指示图标等等合并为一张大图，并利用css background的定位来使多个样式引用同一张图片，那也就可以大大的减少总请求数了，这就是css sprites的由来。</p>
+<h3 id="4、js-css-combine"><a href="#4、js-css-combine" class="headerlink" title="4、js/css combine"></a>4、js/css combine</h3><blockquote>
+<p>合并js、css文件减少浏览器的重新渲染<br>压缩资源减小传输的体积</p>
+</blockquote>
+<p>全站的js/css原本并不多，其合并技术的产生却是有着和图片不同的考虑。 由于cs/js通常可能对dom布局甚至是内容造成影响，在浏览器解析上，不连贯的载入是会造成多次重新渲染的。因此，在网站变大需要保持模块化来提高可维护性的前提下，js/css combine也就自然衍生了，同时也是minify、compress等对内容进行多余空格、空行、注释的整理和压缩的技术出现的原因。</p>
+<h3 id="5、max-expires-time"><a href="#5、max-expires-time" class="headerlink" title="5、max expires time"></a>5、max expires time</h3><blockquote>
+<p>静态资源缓存有效期加长</p>
+</blockquote>
+<p>随着cookie free和domain hash的引入，网站整体的打开速度将会大大的上一个台阶。 这时我们通常看到的问题是大量的请求由于全站公有header/footer/nav等关系，其对应文件早已在本地缓存里存在了，但为了确保这个内容没有发生修改，浏览器还是需要请求一次服务器，拿到一个304 Not Modified才能放心。 一些比较大型的网站在建立了比较规范的发布制度后，会将大部分静态资源的有效期设置为最长，也就是Cache-Control max-age为10年。 这样设置后，浏览器就再也不会在有缓存的前提下去确认文件是否有修改了。 超长的有效期可以让用户在访问曾访问过的网站或网页时，获得最佳的体验。 带来的复杂性则体现在每次对静态资源进行更新时，必须发布为不同的URL来确保用户重新加载变动的资源。</p>
+<h3 id="6、loading-images-on-demand"><a href="#6、loading-images-on-demand" class="headerlink" title="6、loading images on demand"></a>6、loading images on demand</h3><blockquote>
+<p>图片按需加载，用占位符填补图片空位，待图片进入可视区域再进行加载</p>
+</blockquote>
+<p>即使是这样做完，仍然还存在着一个很大的优化空间，那就是很多页面浏览量很大，但其实用户直接很大比例直接就跳走了，第一屏以下的内容用户根本就不感兴趣。 对于超大流量的网站如淘宝、新浪等，这个问题尤其重要。 这个时候一般是通过将图片的src标签设置为一个loading或空白的样式，在用户翻页将图片放入可见区或即将放入可见区时再去载入。 不过这个优化其实和并发资源数的关系就比较小了，只是对一些散布不合理，或第一页底部的资源会有一定的帮助。 主要意图还是降低带宽费用。</p>
+<h2 id="资源加载"><a href="#资源加载" class="headerlink" title="资源加载"></a>资源加载</h2><p>浏览器在加载html时，只要网络层返回一部分数据后就会开始解析，遇到外链样式、脚本、图片都会像服务器请求资源，而不需要等到所有html都下载完成才开始，渲染也是同步进行的。</p>
+<p>1、将css放在html的头部可以随html的加载一起渲染页面，减少页面空白时间，更快的让用户看到渲染的页面。</p>
+<p>2、js的下载和解析会阻塞其他的下载和呈现，所以尽量将js在页面底部。</p>
+<p><a href="https://lifesinger.wordpress.com/2012/02/03/performance-impact-of-js-css-loading-order/" target="_blank" rel="external">JS 和 CSS 的位置对其他资源加载顺序的影响</a></p>
+<p>3、延迟加载js文件。</p>
+<p>4、按需加载资源。</p>
+<h2 id="浏览器渲染页面"><a href="#浏览器渲染页面" class="headerlink" title="浏览器渲染页面"></a>浏览器渲染页面</h2><h3 id="渲染过程"><a href="#渲染过程" class="headerlink" title="渲染过程"></a>渲染过程</h3><p>浏览器渲染引擎的渲染过程，主要有三步骤：</p>
+<p>1、解析。浏览器会解析HTML/SVG/XHTML，事实上，webkit有三个C++的类对应这三类文档。浏览器解析这三种文件会产生一个DOM Tree；解析CSS，产生style rules；解析Javacript，主要通过DOM API和CSSOM API来操作DOM Tree和CSS Rule Tree</p>
+<p>2、浏览器引擎通过DOM Tree和CSS Rule Tree来构造Rendering Tree。<br>Rendering Tree 并不与 DOM Tree 对应，比如像 <head> 标签内容或带有 display: none; 的元素节点并不包括在 Rendering Tree 中 。<br>通过 CSS Rule Tree 匹配 DOM Tree 进行定位坐标和大小，是否换行，以及 position、overflow、z-index 等等属性，这个过程称为 Flow 或 Layout 。</head></p>
+<p>3、最终通过调用Native GUI 的 API 绘制网页画面的过程称为 Paint。</p>
+<h3 id="重绘和重排"><a href="#重绘和重排" class="headerlink" title="重绘和重排"></a>重绘和重排</h3><p>当用户在浏览网页时进行交互或通过 js 脚本改变页面结构时，以上的部分操作有可能重复运行，此过程称为 Repaint 或 Reflow。</p>
+<p><strong>Repaint</strong><br>当元素改变的时候，将不会影响元素在页面当中的位置（比如 background-color, border-color, visibility），浏览器仅仅会应用新的样式重绘此元素，此过程称为 Repaint。</p>
+<p><strong>Reflow</strong><br>当元素改变的时候，将会影响文档内容或结构，或元素位置，此过程称为 Reflow。（ HTML 使用的是 flow based layout ，也就是流式布局，所以，如果某元件的几何尺寸发生了变化，需要重新布局，也就叫 Reflow。）</p>
+<blockquote>
+<p>Reflow 的成本比 Repaint 的成本高得多的多。一个结点的 Reflow 很有可能导致子结点，甚至父点以及同级结点的 Reflow 。在一些高性能的电脑上也许还没什么，但是如果 Reflow 发生在手机上，那么这个过程是延慢加载和耗电的。—-浏览器的渲染原理简介</p>
+</blockquote>
+<ul>
+<li>当你增加、删除、修改DOM结点时，会导致Reflow或Repaint</li>
+<li>当你移动DOM的位置，或是搞个动画的时候。</li>
+<li>当你修改CSS样式的时候。</li>
+<li>当你Resize窗口的时候（移动端没有这个问题），或是滚动的时候。</li>
+<li>当你修改网页的默认字体时。</li>
+</ul>
+<h3 id="针对渲染的优化方法"><a href="#针对渲染的优化方法" class="headerlink" title="针对渲染的优化方法"></a>针对渲染的优化方法</h3><p>1、减少 CSS 嵌套层级和选择适当的选择器（CSS匹配DOM Tree主要是从右到左解析CSS的Selector）<br>2、不要通过 JS 逐条修改 DOM 的样式，提前定义好 CSS 的 Class 进行操作。<br>3、把DOM离线后修改样式。<br>4、不要把DOM结点的属性值放在一个循环里当成循环里的变量。不然这会导致大量地读写这个结点的属性。<br>5、尽可能的为产生动画的 HTML 元素使用 fixed 或absolute 的 position ，那么修改他们的 CSS 是不会 Reflow 的。</p>
+<h2 id="PageSpeed"><a href="#PageSpeed" class="headerlink" title="PageSpeed"></a>PageSpeed</h2><p>PageSpeed Insights是Google的一个网站性能测试工具，可以根据这十大规则来进行更多性能上的优化。</p>
+<p><a href="https://developers.google.com/speed/docs/insights/rules?csw=1#page-speed" target="_blank" rel="external">PageSpeed规则</a></p>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>越来越重视用户体验的现在，性能优化也是前端比较重要的点，并且还有根据用户需求来做的优化，比如优先加载首屏、优先加载文章内容等…   在秒甚至毫秒级的时间里偷时间，这也是前端的乐趣所在。</p>
+<p>最近正在读的性能优化的好书：<br>《Web性能实践日志》</p>
+
+    </div>
+    <footer>
+      
+      
+  <!--<div class="addthis addthis_toolbox addthis_default_style">-->
+    <!---->
+    <!---->
+    <!---->
+    <!---->
+    <!--<a class="addthis_counter addthis_pill_style"></a>-->
+  <!--</div>-->
+<div class="bdsharebuttonbox"><a href="#" class="bds_more" data-cmd="more">分享到：</a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信">微信</a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博">新浪微博</a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间">QQ空间</a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博">腾讯微博</a><a href="#" class="bds_renren" data-cmd="renren" title="分享到人人网">人人网</a></div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":["qzone","tsina","bdysc","weixin","tqq","tieba","douban","sqq","huaban","youdao","fbook","twi","linkedin","evernotecn","copy"],"bdPic":"","bdStyle":"2","bdSize":"16"},"share":{"bdSize":16},"image":{"viewList":["weixin","tsina","qzone","tqq","renren"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["weixin","tsina","qzone","tqq","renren"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+  <!--<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>-->
+
+    </footer>
+  </div>
+</article>
+
+<section id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="post-performance-optimization" data-title="页面呈现过程中的前端性能优化点" data-url="http://yilene.github.io/2016/09/02/performance-optimization/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+        var duoshuoQuery = {short_name:"undefined"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0]
+            || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</section>
+
+</div></div>
+      <div class="clearfix"></div>
+    </div>
+  </div>
+  <div id="aboutDrop" class="backdrop hide">
+  <div id="aboutInfo" class="about-wrap animated bounceInDown">
+    <div class="author-img">
+      <img src="/images/avatar-author.jpg" alt="Ilene">
+    </div>
+    <div class="author-info">
+      <p>Hi I’m Ilene, a front-end developer</p>
+      <ul class="contact clearfix">
+        <li><a href="https://github.com/Yilene" target="_blank" class="link-github">github</a></li>
+        <li><a href="http://weibo.com/yilene" target="_blank" class="link-weibo">weibo</a></li>
+        <li><a href="mailto:ilene.yali@gmail.com" target="_blank" class="link-email">email</a></li>
+      </ul>
+    </div>
+    <a id="closeBtn" class="close-about">
+      <span class="close"></span>
+    </a>
+  </div>
+</div>
+
+  <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>-->
+<script src="/js/jquery-3.1.0.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/fastclick.js"></script>
+<script src="/js/scroll-spy.js"></script>
+<script src="/js/zenscroll.js"></script>
+<script src="/js/util.js"></script>
+<script src="/js/app.js"></script>
+
+<!---->
+
+
+</body>
+</html>

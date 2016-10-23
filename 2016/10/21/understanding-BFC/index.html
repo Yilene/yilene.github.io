@@ -98,6 +98,7 @@
 <p>块格式化上下文（block formatting context） 是页面 CSS 视觉渲染(visual CSS rendering)这个过程中的一个概念。它是决定块盒子的布局及浮动元素相互影响的一个因素。</p>
 <p>块格式化上下文包括了创建该上下文的元素的所有子元素，但不包括创建了新的块格式化上下文的子元素。</p>
 <p>创建了BFC的元素就是一个独立的盒子，只有block-level box可以参与BFC，它规定了内部的Block-level Box如何布局，并且与这个独立盒子里的布局不受外部影响，当然它也不会影响到外面的元素。</p>
+<a id="more"></a>
 <h2 id="BFC的定义"><a href="#BFC的定义" class="headerlink" title="BFC的定义"></a>BFC的定义</h2><p>w3c规范中对BFC的定义：</p>
 <blockquote>
 <p>浮动元素和绝对定位元素，非块级盒子的块级容器（例如inline-block，table-cells，table-captions），以及overflow的值不为”visible”的元素，都会为他们的内容创建新的BFC（块级格式上下文）<br>在BFC中，盒子从包含块的顶端开始垂直地一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的，两个相邻的块级盒子的垂直外边距会发生叠加。<br>在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器的左边缘（border-left）（对于从右到左的格式来说，则触碰到右边缘），即使存在浮动也是如此，除非这个盒子创建一个新的块级格式上下文。</p>
@@ -127,6 +128,7 @@
 <h3 id="使用BFC来清除浮动"><a href="#使用BFC来清除浮动" class="headerlink" title="使用BFC来清除浮动"></a>使用BFC来清除浮动</h3><p>由于浮动元素会脱离页面的常规流，导致容器元素的高度不能被撑开，通过添加<code>overflow: hidden</code>，在容器中创建一个新的BFC，那么这个容器将包含浮动的子元素，它的高度也将扩展到可以包含它的子元素。</p>
 <h3 id="使用BFC防止文字环绕"><a href="#使用BFC防止文字环绕" class="headerlink" title="使用BFC防止文字环绕"></a>使用BFC防止文字环绕</h3><p>由于BFC容器内的元素从左往右排列时，左外边距与容器的左边界相接触，导致一个浮动元素的周围的文字环绕着它，此时通过创建一个新的BFC解决了文字环绕在浮动元素周围的问题。</p>
 <h3 id="多列布局中使用BFC"><a href="#多列布局中使用BFC" class="headerlink" title="多列布局中使用BFC"></a>多列布局中使用BFC</h3><p>与浮动元素相邻的已生成BFC的元素不能与浮动元素相互覆盖，利用这个特性可以作为多栏布局的一种实现方式。</p>
+<p> 参阅：<br><a href="https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Block_formatting_context" target="_blank" rel="external">MDN-CSS开发者指南</a></p>
 
     </div>
     <footer>

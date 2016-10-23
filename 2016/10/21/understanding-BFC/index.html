@@ -88,13 +88,13 @@
       
   <div id="toc" class="toc-article">
     <!--<strong class="toc-title">文章目录</strong>-->
-    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#理解BFC"><span class="toc-text">理解BFC</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC的定义"><span class="toc-text">BFC的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC的运用"><span class="toc-text">BFC的运用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#阻止外边距折叠"><span class="toc-text">阻止外边距折叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用BFC来清除浮动"><span class="toc-text">使用BFC来清除浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用BFC防止文字环绕"><span class="toc-text">使用BFC防止文字环绕</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多列布局中使用BFC"><span class="toc-text">多列布局中使用BFC</span></a></li></ol></li></ol></li></ol>
+    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC的定义"><span class="toc-text">BFC的定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#BFC的运用"><span class="toc-text">BFC的运用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#阻止外边距折叠"><span class="toc-text">阻止外边距折叠</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用BFC来清除浮动"><span class="toc-text">使用BFC来清除浮动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#使用BFC防止文字环绕"><span class="toc-text">使用BFC防止文字环绕</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#多列布局中使用BFC"><span class="toc-text">多列布局中使用BFC</span></a></li></ol></li></ol>
   </div>
 
 
     </header>
     <div class="post-main">
-      <h1 id="理解BFC"><a href="#理解BFC" class="headerlink" title="理解BFC"></a>理解BFC</h1><h2 id="BFC的定义"><a href="#BFC的定义" class="headerlink" title="BFC的定义"></a>BFC的定义</h2><p>BFC：Block Formatting Context（块级格式上下文）</p>
+      <h2 id="BFC的定义"><a href="#BFC的定义" class="headerlink" title="BFC的定义"></a>BFC的定义</h2><p>BFC：Block Formatting Context（块级格式上下文）</p>
 <p>Formatting Context ，是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。<br>Block Formatting Context，创建了BFC的元素就是一个独立的盒子，只有block-level box可以参与BFC，它规定了内部的Block-level Box如何布局，并且与这个独立盒子里的布局不受外部影响，当然它也不会影响到外面的元素。</p>
 <a id="more"></a>
 <p>w3c规范中对BFC的定义：</p>

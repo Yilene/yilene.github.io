@@ -94,21 +94,25 @@
 
     </header>
     <div class="post-main">
-      <h2 id="BFC的定义"><a href="#BFC的定义" class="headerlink" title="BFC的定义"></a>BFC的定义</h2><p>BFC：Block Formatting Context（块级格式上下文）</p>
-<p>Formatting Context ，是页面中的一块渲染区域，并且有一套渲染规则，它决定了其子元素将如何定位，以及和其他元素的关系和相互作用。<br>Block Formatting Context，创建了BFC的元素就是一个独立的盒子，只有block-level box可以参与BFC，它规定了内部的Block-level Box如何布局，并且与这个独立盒子里的布局不受外部影响，当然它也不会影响到外面的元素。</p>
-<a id="more"></a>
-<p>w3c规范中对BFC的定义：</p>
+      <p>BFC：Block Formatting Context（块级格式上下文）</p>
+<p>块格式化上下文（block formatting context） 是页面 CSS 视觉渲染(visual CSS rendering)这个过程中的一个概念。它是决定块盒子的布局及浮动元素相互影响的一个因素。</p>
+<p>块格式化上下文包括了创建该上下文的元素的所有子元素，但不包括创建了新的块格式化上下文的子元素。</p>
+<p>创建了BFC的元素就是一个独立的盒子，只有block-level box可以参与BFC，它规定了内部的Block-level Box如何布局，并且与这个独立盒子里的布局不受外部影响，当然它也不会影响到外面的元素。</p>
+<h2 id="BFC的定义"><a href="#BFC的定义" class="headerlink" title="BFC的定义"></a>BFC的定义</h2><p>w3c规范中对BFC的定义：</p>
 <blockquote>
 <p>浮动元素和绝对定位元素，非块级盒子的块级容器（例如inline-block，table-cells，table-captions），以及overflow的值不为”visible”的元素，都会为他们的内容创建新的BFC（块级格式上下文）<br>在BFC中，盒子从包含块的顶端开始垂直地一个接一个地排列，两个盒子之间的垂直的间隙是由他们的margin值所决定的，两个相邻的块级盒子的垂直外边距会发生叠加。<br>在BFC中，每一个盒子的左外边缘（margin-left）会触碰到容器的左边缘（border-left）（对于从右到左的格式来说，则触碰到右边缘），即使存在浮动也是如此，除非这个盒子创建一个新的块级格式上下文。</p>
 </blockquote>
 <p>总结即：</p>
-<p>会生成BFC的元素：</p>
+<p>会创建一个块格式上下文的情况：</p>
 <ol>
-<li>根元素</li>
-<li>float的值不为none</li>
-<li>position的值为absolute或fixed</li>
-<li>display的值为table-cell、table-caption、inline-block、flex或inline-flex</li>
-<li>overflow的值不为visible</li>
+<li>根元素或其它包含它的元素</li>
+<li>浮动 (元素的 float 不为 none)</li>
+<li>绝对定位元素 (元素的 position 为 absolute 或 fixed)</li>
+<li>行内块 inline-blocks (元素的 display: inline-block)</li>
+<li>表格单元格 (元素的 display: table-cell，HTML表格单元格默认属性)</li>
+<li>表格标题 (元素的 display: table-caption, HTML表格标题默认属性)</li>
+<li>overflow 的值不为 visible的元素</li>
+<li>弹性盒子 flex boxes (元素的 display: flex 或 inline-flex)</li>
 </ol>
 <p>BFC的特性：</p>
 <ol>
